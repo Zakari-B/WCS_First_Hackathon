@@ -23,6 +23,11 @@
 }
 
 /* RESET.CSS */
+
+* {
+  box-sizing: border-box;
+}
+
 html,
 body,
 div,
@@ -130,8 +135,6 @@ body {
   font-family: "Poppins", sans-serif;
   line-height: 1;
   margin: 0;
-  background-image: url(../assets/img/body-bg.jpg);
-  background-repeat: repeat;
 }
 ol,
 ul {
