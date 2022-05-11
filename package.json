@@ -1,11 +1,11 @@
 {
-    "name": "Undefined Hackaton Template",
+    "name": "undefined_hackaton_template",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
     "scripts": {
       "dev-front": "npm --prefix ./frontend run dev",
-      "dev-back": "npm --prefix ./backend run dev",
+      "dev-back": "npm --prefix ./backend run dev"
     },
     "keywords": [],
     "author": "Team Undefined",
