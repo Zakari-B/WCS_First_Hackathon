@@ -12,8 +12,8 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "sass": "^1.51.0",
-    "web-vitals": "^2.1.4",
-    "undefined_hackaton_template": "file:.."
+    "undefined_hackaton_template": "file:..",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "dev": "react-scripts start",

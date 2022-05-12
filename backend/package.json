@@ -11,8 +11,8 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4",
-    "undefined_hackaton_template": "file:.."
+    "undefined_hackaton_template": "file:..",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "dev": "react-scripts start",
