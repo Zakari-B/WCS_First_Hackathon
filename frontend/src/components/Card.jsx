@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/Card.scss";
-import tree from "../assets/svg/tree.svg";
 
 const Card = ({ card, handleCardClick, buyCard }) => {
   return (
@@ -19,7 +18,7 @@ const Card = ({ card, handleCardClick, buyCard }) => {
         <h1 className="card-title">{card.name}</h1>
         <div className="card-img">
           {" "}
-          <img src={tree} alt="" className="card-img" draggable={false} />
+          <img src={card.image} alt="" className="card-img" draggable={false} />
         </div>
       </div>
       <div className="card-bottom">
