@@ -6,8 +6,10 @@ import Board from "../components/Board.jsx";
 import "../styles/Game.scss";
 import data from "../assets/cards.json";
 import EnergyContext from "../contexts/EnergyContext";
+import EarthHealthContext from "../contexts/EarthHealthContext";
 
 const Game = () => {
+  const [shopOpen, setShopOpen] = useState(false);
   const [cardsDeck, setCardsDeck] = useState(
     data.filter((e) => e.isStarterDeck)
   );
@@ -18,6 +20,12 @@ const Game = () => {
   );
   const [turn, setTurn] = useState(15);
   const { energy, setEnergy } = useContext(EnergyContext);
+  const { earthHealth, setHearthHealth } = useContext(EarthHealthContext);
+
+  const handleShop = () => {
+    console.log("Handling shop");
+    setShopOpen(!shopOpen);
+  };
 
   /*
   Organisation d'un tour :
@@ -27,13 +35,12 @@ OK      - push Card dans la Hand
 OK      - Retrait de la carte dans la drawpile
 OK              Si DrawPile === [], ne pas afficher visuellement de DrawPile
 
-2) - Ecoute : onClick sur les cards, => 
-                  Energie OK ? ajout à la Discard, retrait de la Hand, baisser Energie
-                  Energie NOK ? Ne pas jouer
-    -          onClick sur fin de tour =>
-                  cardsHand push dans cardsDiscard
-                        IF Turn === 0 => Modal Partie finie, bouton redirect page result
-                  Etape suivante
+OK 2) - Ecoute : onClick sur les cards, => 
+OK                   Energie OK ? ajout à la Discard, retrait de la Hand, baisser Energie
+OK                   Energie NOK ? Ne pas jouer
+
+
+  // Etape suivante
   3) ShopModal qui apparait
       onClick => ajouter au deck, ferme shopModal
       Désincrèmenter turn
@@ -104,8 +111,40 @@ OK              Si DrawPile === [], ne pas afficher visuellement de DrawPile
     }
   };
 
-  const handleFinishTurnClick = (e) => {
-    console.log(e);
+  // -          onClick sur fin de tour =>
+  // cardsHand push dans cardsDiscard
+  //       IF Turn === 0 => Modal Partie finie, bouton redirect page result
+
+  const handlePlay = (e) => {
+    console.log("handlePlay", e);
+
+    setHearthHealth(
+      earthHealth +
+        cardsHand
+          .filter((card) => card.selected)
+          .reduce((acc, val) => acc + val.value, 0)
+    );
+    setCardsHand(cardsHand.filter((card) => !card.selected));
+
+    setCardsDiscard(cardsHand.filter((card) => card.selected));
+  };
+
+  const handleFinishTurn = () => {
+    setShopOpen(false);
+    setTurn(turn - 1);
+    if (turn - 1 === 0) {
+      // finish game
+    } else piocheCartes();
+  };
+
+  const buyCard = (selected) => {
+    console.log(selected);
+    console.log(data);
+    setCardsDrawPile([
+      ...cardsDrawPile,
+      data.filter((card) => card.id === selected)[0],
+    ]);
+    handleFinishTurn();
   };
 
   useEffect(() => {
@@ -122,7 +161,14 @@ OK              Si DrawPile === [], ne pas afficher visuellement de DrawPile
           </div>
 
           <div className="ShopContainer">
-            <Shop />
+            <Shop
+              shopOpen={shopOpen}
+              handleShop={handleShop}
+              cardsHand={cardsHand}
+              cardsDiscard={cardsDiscard}
+              cardsDrawPile={cardsDrawPile}
+              buyCard={buyCard}
+            />
           </div>
         </div>
 
@@ -133,6 +179,7 @@ OK              Si DrawPile === [], ne pas afficher visuellement de DrawPile
             cardsDrawPile={cardsDrawPile}
             cardsDeck={cardsDeck}
             cardsDiscard={cardsDiscard}
+            handlePlay={handlePlay}
           />
         </div>
       </div>

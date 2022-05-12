@@ -1,6 +1,6 @@
 .card-unselected{
     transform: translateY(0);
-    transition: transform .5s;
+    transition: transform .3s ease-in-out;
 }
 
 .card-selected{
@@ -18,7 +18,8 @@
     border: 1px solid #575757;
     border-radius: 15px;
     box-shadow: 4px 4px 15px 1px rgba(97, 97, 97, 0.44);
-
+    z-index:1;
+    
     .card-top,
     .card-bottom {
         position: relative;
@@ -110,5 +111,29 @@
             right: 8px;
             filter: drop-shadow(2px 2px 2px rgb(141, 141, 141)); 
         }
+    }
+}
+
+.cardHover{
+    transform:scale(1.1);
+z-index:2;
+}
+
+.card-verso{
+    background-color: gray;
+    width: 200px;
+    height: 300px;
+    border: 1px solid #575757;
+    border-radius: 15px;
+    box-shadow: 4px 4px 15px 1px rgba(97, 97, 97, 0.44);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    user-select: none;
+    cursor:pointer;
+
+    & > span {
+        font-size: 5vw;
+        font-weight: bold;
     }
 }

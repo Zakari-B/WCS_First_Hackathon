@@ -6,12 +6,12 @@ export default PlayerContext;
 
 // eslint-disable-next-line react/prop-types
 export function PlayerContextProvider({ children }) {
-  const [playerName, setPlayerName] = useState([]);
+	const [playerName, setPlayerName] = useState("");
 
-  return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <PlayerContext.Provider value={{ playerName, setPlayerName }}>
-      {children}
-    </PlayerContext.Provider>
-  );
+	return (
+		// eslint-disable-next-line react/jsx-no-constructed-context-values
+		<PlayerContext.Provider value={{ playerName, setPlayerName }}>
+			{children}
+		</PlayerContext.Provider>
+	);
 }
