@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 /* Variables */
 :root {
@@ -20,6 +21,7 @@
   --background-card: #141414;
   --card-shadow: #7731b046;
   --box-shadow: rgba(0, 0, 0, 0.726);
+  --font-family-text: 'Overpass', sans-serif;
 }
 
 /* RESET.CSS */

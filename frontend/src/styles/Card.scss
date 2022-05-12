@@ -6,3 +6,109 @@
 .card-selected{
     transform: translateY(-10vh);
 }
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   // background-color: #fbe0d0;
+    width: 200px;
+    height: 300px;
+    text-align: center;
+    border: 1px solid #575757;
+    border-radius: 15px;
+    box-shadow: 4px 4px 15px 1px rgba(97, 97, 97, 0.44);
+
+    .card-top,
+    .card-bottom {
+        position: relative;
+        width: 100%;
+    }
+
+    .card-top {
+        height: 70%;
+        .card-cost {
+            position: absolute;
+            font-size: 1.6rem;
+            font-weight: 500;
+            top: 6px;
+            left: 9px;
+            margin-left: 10px;
+            margin-top: 10px;
+            z-index: 999;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .card-img {
+            margin: auto;
+            img {
+                width: 68%;
+                height: 68%;
+                filter: drop-shadow(4px 4px 5px rgb(141, 141, 141)); 
+            }
+        }
+      
+        &::before {
+            position: absolute;
+            content: '';
+            background-image: url(../assets/svg/cost-box.svg);
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 80px;
+            top: 8px;
+            left: 7px;
+            z-index: 9;
+        }
+
+        &::after {
+            position: absolute;
+            content: '';
+            background-image: url(../assets/svg/corner-top.svg);
+            background-repeat: no-repeat;
+            width: 70px;
+            height: 70px;
+            top: 8px;
+            right: 7px;
+        }
+    }
+
+    .card-bottom {       
+        height: 30%;
+
+        .card-effect {
+            margin: 0 auto;
+            font-size: 1.2rem;
+            font-weight: 500;
+            max-width: 60%;
+        }
+
+        &::before {
+            position: absolute;
+            content: '';
+            background-image: url(../assets/svg/corner-bottom.svg);
+            background-repeat: no-repeat;
+            width: 70px;
+            height: 70px;
+            bottom: 6px;
+            left: 6px;
+        }
+
+        &::after {
+            position: absolute;
+            content: '';
+            background-image: url(../assets/svg/good-icon.svg);
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+            bottom: 7px;
+            right: 8px;
+            filter: drop-shadow(2px 2px 2px rgb(141, 141, 141)); 
+        }
+    }
+}
