@@ -6,7 +6,7 @@ const Hud = () => {
   const { playerName } = useContext(PlayerContext);
   return (
     <div className="hud">
-      <span className="hudPlayerName">Player name : {playerName} TOTO</span>
+      <span className="hudPlayerName">Player name : {playerName} </span>
     </div>
   );
 };
