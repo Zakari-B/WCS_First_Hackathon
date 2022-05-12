@@ -1,3 +1,12 @@
+.card-unselected{
+    transform: translateY(0);
+    transition: transform .5s;
+}
+
+.card-selected{
+    transform: translateY(-10vh);
+}
+
 .card {
     display: flex;
     flex-direction: column;

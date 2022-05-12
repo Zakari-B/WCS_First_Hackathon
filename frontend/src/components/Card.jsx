@@ -2,11 +2,14 @@ import React from "react";
 import "../styles/Card.scss";
 import tree from "../assets/svg/tree.svg";
 
-const Card = ({ card }) => {
+const Card = ({ card, handleCardClick }) => {
   return (
     <div
       id={card.id}
-      className={`card ${card.positif ? "bg-green-200" : "bg-orange-200"} `}
+      className={`card-unselected card ${
+        card.positif ? "bg-green-200" : "bg-orange-200"
+      } ${card.selected && "card-selected"}`}
+      onClick={(e) => handleCardClick(e, card.id)}
     >
       <div className="card-top">
         <p className="card-cost">{card.cost}</p>
