@@ -1,95 +1,98 @@
 .startContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    background-image: url("https://images.unsplash.com/photo-1513114132581-6048074e6283?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80");
-    background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+	background-image: url("https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80");
+	background-size: cover;
 }
 
 .glassMorph {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 70%;
-    height: 40vh;
-    background: rgba(255, 255, 255, 0.18);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 70%;
+	height: auto;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
+	border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.startText{
-    margin-top: 15%;
-    font-size: clamp(2.5rem, 6vw, 8rem);
-    font-family: var(--font-family-text);
-    font-weight: 600;
+.startText {
+	margin-top: 15%;
+	font-size: clamp(2.5rem, 6vw, 8rem);
+	font-family: var(--font-family-text);
+	font-weight: 600;
 }
-.startInput{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 40vw;
-    height: 17vh;
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+.startInput {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 39vw;
+	height: 10vh;
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.text-input{
-    padding: 4%;
-    width: 90%;
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    margin-top: 3%;
+.text-input {
+	width: auto;
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(5px);
+	font-family: var(--font-family-text);
 }
-.start-form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.start-form {
+	display: flex;
+	align-items: center;
 }
-.img-help{
-    width: 6vw;
-    position: absolute;
-    z-index: 3;
-    font-size: 2.5rem;
-    margin-left: 78%;
-    margin-top: 30vh;
+.img-help {
+	width: 4vw;
+	position: absolute;
+	z-index: 3;
+	font-size: 2.5rem;
+	margin-left: 80%;
+	margin-top: 30vh;
+	border-radius: 50%;
+	border: 2px solid rgb(165 210 70);
+	background-color: var(--text-color);
+	opacity: 0.6;
 }
-.hide{
-    display: none;
-    width: 30%;
-    font-size: clamp(1rem, 2vw, 3rem);
-    position: absolute;
-    color: black;
-    background-color: rgba(255, 255, 255, 0.774);
-    padding: 2%;
-    margin-top: 20vh;
-    z-index: 1;
-    margin-left: 50vw;
+.img-help:hover {
+	background-color: rgb(165 210 70);
+	opacity: 1;
+}
+.hide {
+	display: none;
+	width: 50%;
+	margin-left: 30vw;
+	font-family: var(--font-family-text);
+	font-size: clamp(1rem, 1.5vw, 2.5rem);
+	position: absolute;
+	color: var(--background-card);
+	background-color: rgba(255, 255, 255, 0.774);
+	padding: 2%;
+	margin-top: 20vh;
+	z-index: 1;
+}
+.img-help:hover + .hide {
+	display: block;
+}
+.btn {
+	background-color: rgb(165 210 70);
+	font-family: var(--font-family-text);
+}
 
-}
-.img-help:hover + .hide{
-    display: block;
-}
-.btn{
-    padding: 2%;
-    font-size: 1.5rem;
-    margin-top: 3%;
-}
-.btn:hover{
-    border: 1px solid black;
-}
 @media screen and (min-width: 768px) {
-    .glassMorph {
-        height: 70vh;
-    }
-    .img-help{
-        margin-top: 17vh;
-    }
+	.glassMorph {
+		height: 70vh;
+	}
+	.img-help {
+		margin-top: 17vh;
+	}
 }
