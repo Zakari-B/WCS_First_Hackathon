@@ -1,0 +1,19 @@
+.earthContainer {
+  position: relative;
+  width: 350px;
+  height: 350px;
+
+  .earthImg {
+    position: absolute;
+  }
+
+  .earthGreen{
+      top:40%;
+      left: 10%;
+      width: 90%;
+  }
+
+  .earthDead {
+    width: 200%;
+  }
+}

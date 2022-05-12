@@ -1,0 +1,18 @@
+[
+    {
+        "cost": 1,
+        "name": "TestCard Eco",
+        "position": "",
+        "impact": 1,
+        "image": "tree",
+        "effect": "Plant a tree to help the planet recover from excess CO2"
+    },
+    {
+        "cost": 1,
+        "name": "TestCard AntiEco",
+        "position": "",
+        "impact": -1,
+        "image": "cut tree",
+        "effect": "Cut trees to provide wood for factories"
+    }
+]

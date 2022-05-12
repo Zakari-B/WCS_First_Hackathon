@@ -1,0 +1,68 @@
+.GameContainer {
+    position: relative;
+    display:flex;
+    flex-direction:column;
+    border : 2px solid black;
+    min-height:100vh;
+    min-width:100vw;
+}
+
+.GameContainerUpper {
+    display:flex;
+    flex-direction:row;
+    min-height:50vh;
+    height:50%;
+    width:100%;
+    border : 2px solid red;
+}
+
+.EarthContainer {
+    min-height:100%;
+    width:50%;
+    border : 2px solid blue;
+}
+
+
+.ShopContainer {
+    display:flex;
+    align-items:center;
+    min-height:100%;
+    width:50%;
+    border : 2px solid orange;
+}
+
+
+.GameTray {
+    display:flex;
+    flex-direction:row;
+    min-height:50vh;
+    height:50%;
+    width:100%;
+    border : 2px solid green;
+}
+
+.HandInner {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    height:100%;
+    width:100%;
+}
+
+.ShopDiv {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items:center;
+    border:2px solid green;
+    height:95%;
+    width:95%;
+    margin:auto;
+}
+
+.ShopCard {
+    border: 2px solid black;
+    height: 40%;
+    width: 30%;
+}

@@ -1,0 +1,15 @@
+.batteryContainer {
+  margin:auto;
+  position: relative;
+  height: 150px;
+  width: 75px;
+
+  .batteryBar {
+      position: absolute;
+      
+    left: 20%;
+      background-color: green;
+    width: 60%;
+    height: 16%;
+  }
+}
