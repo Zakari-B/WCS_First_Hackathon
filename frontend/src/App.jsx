@@ -1,10 +1,10 @@
+import "./styles/App.css";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Start from "./pages/Start";
 import Game from "./pages/Game";
 import GameOver from "./pages/GameOver";
-import "./styles/App.css";
 
 function App() {
   return (
