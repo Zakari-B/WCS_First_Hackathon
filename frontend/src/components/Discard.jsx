@@ -1,7 +1,7 @@
 import React from "react";
 import CardListModal from "./CardListModal.jsx";
 
-function Pioche({ title, dataSet }) {
+function Discard({ title, dataSet }) {
   return (
     <div>
       <CardListModal title={title} dataSet={dataSet} />
@@ -9,4 +9,4 @@ function Pioche({ title, dataSet }) {
   );
 }
 
-export default Pioche;
+export default Discard;

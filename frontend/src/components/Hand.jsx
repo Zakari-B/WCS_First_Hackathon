@@ -1,12 +1,15 @@
 import React from "react";
 import Energy from "../components/Energy.jsx";
+import Card from "../components/Card.jsx";
 
-const Hand = () => {
+const Hand = ({ cardsHand, handleCardClick }) => {
   return (
     <div className="HandInner">
       <Energy />
       <div className="CardContainer">
-        cards go here
+        {cardsHand.map((card) => (
+          <Card key={card.id} handleCardClick={handleCardClick} card={card} />
+        ))}
       </div>
     </div>
   );
