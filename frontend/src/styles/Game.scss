@@ -1,0 +1,28 @@
+.GameContainer {
+    display:flex;
+    flex-direction:column;
+}
+
+.GameContainerUpper {
+    display:flex;
+    flex-direction:row;
+    height:50%;
+    width:100%;
+}
+
+.EarthContainer {
+    height:100%;
+    width:50%;
+}
+
+
+.ShopContainer {
+    height:100%;
+    width:50%;
+}
+
+
+.GameTray {
+    height:50%;
+    width:100%;
+}
