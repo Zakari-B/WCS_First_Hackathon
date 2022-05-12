@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import Hud from "../components/Hud.jsx";
+import Header from "../components/Header";
 import Earth from "../components/Earth.jsx";
 import Shop from "../components/Shop.jsx";
 import Board from "../components/Board.jsx";
@@ -153,7 +153,7 @@ OK                   Energie NOK ? Ne pas jouer
 
   return (
     <>
-      <Hud />
+      <Header />
       <div className="GameContainer">
         <div className="GameContainerUpper">
           <div className="EarthContainer">

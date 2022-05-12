@@ -8,7 +8,7 @@ const Start = () => {
 	const { playerName, setPlayerName } = useContext(PlayerContext);
 
 	return (
-		<>
+		<header>
 			<div className="helpButton">
 				<img
 					src="https://www.svgrepo.com/show/305312/question-mark.svg"
@@ -68,7 +68,7 @@ const Start = () => {
 					</div>
 				</div>
 			</div>
-		</>
+		</header>
 	);
 };
 

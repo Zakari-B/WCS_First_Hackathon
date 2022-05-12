@@ -1,19 +1,25 @@
 .full-navigation {
     width: 100%;
     font-family: var(--font-family-text);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--text-color);
-    background: rgba(7, 1, 1, 0.836);
-    backdrop-filter: blur(4px);
-    z-index: 2;
+    background: #010b1a;
+    z-index: 2;   
+    display: flex;
   }
   
   .navigation {
     display: flex;
     list-style: none;
     align-items: center;
-    justify-content: space-evenly;
-    width: 50%;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .instructions-part{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .logo-nav{
+    width: 4%;
+    margin-left: 3%;
   }
