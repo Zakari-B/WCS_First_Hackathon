@@ -1,9 +1,11 @@
-import React,{ useContext } from "react";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import PlayerContext from "../contexts/PlayerContext";
 import "../styles/Start.css";
 
 const Start = () => {
-  const { setPlayerName} = useContext(PlayerContext);
+  const { setPlayerName } = useContext(PlayerContext);
+
   return (
     <>
       <div className="helpButton">
@@ -14,8 +16,19 @@ const Start = () => {
         <div className="glassMorph">
           <div className="startText">JOUER ?</div>
           <div className="startInput">
-            <input type="text" placeholder="Enter your pseudo..." className="text-input" />
-            <button type="button" className="btn">start</button>
+            <form className="start-form">
+              <input
+                name="player"
+                type="text"
+                placeholder="Enter your pseudo..."
+                className="text-input"
+                onChange={(event) => {
+                setPlayerName(event.target.value)}} />
+               <Link to={`/Game`}> <button
+                type="submit"
+                className="btn">start
+              </button></Link>
+            </form>
           </div>
         </div>
       </div>
