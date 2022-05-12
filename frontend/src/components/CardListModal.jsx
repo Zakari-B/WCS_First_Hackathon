@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Card from "./Card.jsx";
 
 const CardListModal = ({ title, dataSet, openModal, setOpenModal }) => {
-  console.log("modalllll", dataSet);
-
   return (
     <>
       <button

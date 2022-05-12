@@ -3,21 +3,25 @@ import Card from "./Card.jsx";
 import cardsList from "../assets/cards.json";
 
 const Shop = ({
-  id,
   shopOpen,
-  handleShop,
+  toggleShop,
   cardsHand,
   cardsDiscard,
   cardsDrawPile,
-  cardsInPlayerDeck,
   buyCard,
+  setShopOpen,
 }) => {
   const [choices, setChoices] = useState();
   const checkAlreadyExist = () => {
-    const inDeck = [...cardsHand, ...cardsDiscard, ...cardsDrawPile];
+    const inDeck = [...cardsHand, ...cardsDiscard, ...cardsDrawPile].map(
+      (card) => card.id
+    );
     return cardsList.filter((card) => !inDeck.includes(card.id));
   };
   const pickCards = () => {
+    // console.log(
+    //   "Picking cards !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    // );
     const available = checkAlreadyExist();
     const cardsInShop = [];
     while (cardsInShop.length < Math.min(6, available.length)) {
@@ -26,7 +30,7 @@ const Shop = ({
       if (!cardsInShop.includes(available[randomIndex].id))
         cardsInShop.push(available[randomIndex].id);
     }
-    console.log("cards in shop : " + cardsInShop);
+    // console.log("cards in shop : " + cardsInShop);
     setChoices(
       available
         .filter((card) => cardsInShop.includes(card.id))
@@ -38,18 +42,18 @@ const Shop = ({
 
   useEffect(() => {
     pickCards();
-  }, []);
+  }, [cardsHand, cardsDiscard, cardsDrawPile]);
 
   return (
     <>
-      <button className="ShopButton" type="button" onClick={() => handleShop()}>
+      <button
+        className="ShopButton"
+        type="button"
+        onClick={() => setShopOpen(true)}
+      >
         OPEN SHOP
       </button>
-      <button
-        className="testButton"
-        type="button"
-        onClick={() => checkAlreadyExist()}
-      >
+      <button className="testButton" type="button" onClick={() => pickCards()}>
         TESTBUTTON
       </button>
 
@@ -57,15 +61,7 @@ const Shop = ({
         {shopOpen
           ? choices &&
             choices.map((card) => (
-              <Card
-                buyCard={buyCard}
-                key={"Shop_" + card.id}
-                card={card}
-                onClick={() => {
-                  handleShop();
-                  buyCard(card.id);
-                }}
-              />
+              <Card buyCard={buyCard} key={"Shop_" + card.id} card={card} />
             ))
           : null}
       </div>

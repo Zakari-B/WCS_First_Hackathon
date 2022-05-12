@@ -16,10 +16,6 @@ const Energy = () => {
     );
   }, [energy]);
 
-  useEffect(() => {
-    console.log("**** batteryState", batteryState);
-  });
-
   return (
     <div className="batteryContainer">
       <img src={batteryImg} alt="battery" />
