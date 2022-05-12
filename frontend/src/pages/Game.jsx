@@ -23,8 +23,6 @@ const Game = () => {
   const { hearthHealth, setHearthHealth } = useContext(EarthHealthContext);
 
   const toggleShop = () => {
-    // console.log("Handling shop");
-
     setCardsHand(
       cardsHand.map((card) => {
         card.selected = false;
@@ -57,36 +55,24 @@ OK                   Energie NOK ? Ne pas jouer
 */
 
   const piocheCartes = () => {
-    console.log("PIOCHEPIOCHEPIOCHEPIOCHEPIOCHEPIOCHEPIOCHEPIOCHEPIOC");
     let starterIds = cardsHand.map((card) => card.id);
     let newDrawPile = cardsDrawPile;
     let newDiscard = cardsDiscard;
 
-    if (cardsDrawPile.length < 5) {
-      cardsDrawPile.forEach((card) => starterIds.push(card.id));
-      newDrawPile = cardsDiscard;
-    }
-
     // vérifier si pioche suffisante pour avoir 5 carte
     // si nok rajouter à pioche la défausse
     if (cardsDrawPile.length + cardsHand.length < 5) {
-      newDrawPile = [...cardsDrawPile, ...cardsDiscard];
+      newDrawPile = [...newDrawPile, ...newDiscard];
       newDiscard = [];
-      starterIds = [...cardsDrawPile, ...cardsDiscard].map((card) => card.id);
     }
 
-    const nbCardsToGet = Math.min(5, newDrawPile.length);
-
-    console.log("nbCardsToGet", nbCardsToGet);
-    console.log("starterIds before", starterIds.length);
+    const nbCardsToGet = Math.min(5, newDrawPile.length + starterIds.length);
 
     while (starterIds.length < nbCardsToGet) {
-      const randomIndex = Math.floor(Math.random() * cardsDrawPile.length);
-      if (!starterIds.includes(cardsDrawPile[randomIndex].id))
-        starterIds.push(cardsDrawPile[randomIndex].id);
+      const randomIndex = Math.floor(Math.random() * newDrawPile.length);
+      if (!starterIds.includes(newDrawPile[randomIndex].id))
+        starterIds.push(newDrawPile[randomIndex].id);
     }
-
-    console.log("starterIds after", starterIds.length);
 
     setCardsDrawPile(
       newDrawPile.filter((card) => !starterIds.includes(card.id))
@@ -103,14 +89,9 @@ OK                   Energie NOK ? Ne pas jouer
   };
 
   const handleCardClick = (e, id) => {
-    console.log(e);
-    console.log(id);
-
     if (!shopOpen) {
       const cardInHand = !cardsHand.filter((card) => card.id === id)[0]
         .selected;
-
-      // console.log("cardInHand in handleCardClick", cardInHand);
 
       if (cardInHand) {
         if (data.filter((card) => card.id === id)[0].cost <= energy) {
@@ -143,8 +124,6 @@ OK                   Energie NOK ? Ne pas jouer
   //       IF Turn === 0 => Modal Partie finie, bouton redirect page result
 
   const handlePlay = (e) => {
-    // console.log("handlePlay", e);
-
     setHearthHealth(
       hearthHealth +
         cardsHand
@@ -153,29 +132,25 @@ OK                   Energie NOK ? Ne pas jouer
     );
     setCardsHand(cardsHand.filter((card) => !card.selected));
 
-    setCardsDiscard(cardsHand.filter((card) => card.selected));
-
-    // setShopOpen(true);
+    setCardsDiscard([
+      ...cardsDiscard,
+      ...cardsHand
+        .filter((card) => card.selected)
+        .map((card) => {
+          card.selected = false;
+          return card;
+        }),
+    ]);
   };
 
   const handleFinishTurn = () => {
-    // console.log("handleFinishTurn");
     setShopOpen(false);
     setTurn(turn - 1);
     setEnergy(3);
   };
 
   const buyCard = (selected) => {
-    // console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX buyCard");
-
-    // console.log("selected", selected);
-
     const inDeck = [...cardsHand, ...cardsDiscard, ...cardsDrawPile];
-
-    // console.log(
-    //   "inDeck.map((card) => card.id)",
-    //   inDeck.map((card) => card.id)
-    // );
 
     if (!inDeck.map((card) => card.id).includes(selected)) {
       setCardsDrawPile([
@@ -183,10 +158,6 @@ OK                   Energie NOK ? Ne pas jouer
         data.filter((card) => card.id === selected)[0],
       ]);
 
-      // console.log("setCardsDrawPile", [
-      //   ...cardsDrawPile,
-      //   data.filter((card) => card.id === selected)[0],
-      // ]);
       handleFinishTurn();
     }
   };
@@ -197,16 +168,6 @@ OK                   Energie NOK ? Ne pas jouer
       // faire rediriger vers la route gameover
     } else piocheCartes();
   }, [turn]);
-
-  // useEffect(() => {
-  //   piocheCartes();
-  // }, []);
-
-  useEffect(() => {
-    console.log("################ NEW RENDER ################");
-    console.log("**** earthHealth ****", hearthHealth);
-    console.log("**** turn ****", turn);
-  });
 
   return (
     <>

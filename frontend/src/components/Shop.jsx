@@ -16,7 +16,9 @@ const Shop = ({
     const inDeck = [...cardsHand, ...cardsDiscard, ...cardsDrawPile].map(
       (card) => card.id
     );
-    return cardsList.filter((card) => !inDeck.includes(card.id));
+    return cardsList.filter(
+      (card) => !inDeck.includes(card.id) && card.isStarterDeck === false
+    );
   };
   const pickCards = () => {
     // console.log(
@@ -24,7 +26,7 @@ const Shop = ({
     // );
     const available = checkAlreadyExist();
     const cardsInShop = [];
-    while (cardsInShop.length < Math.min(6, available.length)) {
+    while (cardsInShop.length < Math.min(5, available.length)) {
       const randomIndex = Math.floor(Math.random() * available.length);
       // console.log("randomIndex", randomIndex);
       if (!cardsInShop.includes(available[randomIndex].id))
