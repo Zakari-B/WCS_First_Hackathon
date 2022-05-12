@@ -20,10 +20,16 @@ const Game = () => {
   );
   const [turn, setTurn] = useState(15);
   const { energy, setEnergy } = useContext(EnergyContext);
-  const { earthHealth, setHearthHealth } = useContext(EarthHealthContext);
+  const { hearthHealth, setHearthHealth } = useContext(EarthHealthContext);
 
-  const handleShop = () => {
-    console.log("Handling shop");
+  const toggleShop = () => {
+    setCardsHand(
+      cardsHand.map((card) => {
+        card.selected = false;
+        return card;
+      })
+    );
+
     setShopOpen(!shopOpen);
   };
 
@@ -49,26 +55,29 @@ OK                   Energie NOK ? Ne pas jouer
 */
 
   const piocheCartes = () => {
-    const starterIds = [];
+    let starterIds = cardsHand.map((card) => card.id);
     let newDrawPile = cardsDrawPile;
     let newDiscard = cardsDiscard;
 
-    if (cardsDrawPile.length < 5) {
-      cardsDrawPile.forEach((card) => starterIds.push(card.id));
-      newDrawPile = cardsDiscard;
+    // vérifier si pioche suffisante pour avoir 5 carte
+    // si nok rajouter à pioche la défausse
+    if (cardsDrawPile.length + cardsHand.length < 5) {
+      newDrawPile = [...newDrawPile, ...newDiscard];
+      newDiscard = [];
     }
 
-    const nbCardsToGet = 5 - starterIds.length;
+    const nbCardsToGet = Math.min(5, newDrawPile.length + starterIds.length);
 
     while (starterIds.length < nbCardsToGet) {
-      const randomIndex = Math.floor(Math.random() * cardsDrawPile.length);
-      if (!starterIds.includes(cardsDrawPile[randomIndex].id))
-        starterIds.push(cardsDrawPile[randomIndex].id);
+      const randomIndex = Math.floor(Math.random() * newDrawPile.length);
+      if (!starterIds.includes(newDrawPile[randomIndex].id))
+        starterIds.push(newDrawPile[randomIndex].id);
     }
 
     setCardsDrawPile(
       newDrawPile.filter((card) => !starterIds.includes(card.id))
     );
+    setCardsDiscard([...newDiscard]);
     setCardsHand(
       data
         .filter((card) => starterIds.includes(card.id))
@@ -80,35 +89,34 @@ OK                   Energie NOK ? Ne pas jouer
   };
 
   const handleCardClick = (e, id) => {
-    console.log(e);
-    console.log(id);
+    if (!shopOpen) {
+      const cardInHand = !cardsHand.filter((card) => card.id === id)[0]
+        .selected;
 
-    // vérifier si la carte est dans la hand ou dans le cardsDiscard
-    const cardInHand = !cardsHand.filter((card) => card.id === id)[0].selected;
+      if (cardInHand) {
+        if (data.filter((card) => card.id === id)[0].cost <= energy) {
+          setCardsHand(
+            cardsHand.map((card) => {
+              if (card.id === id) card.selected = true;
+              return card;
+            })
+          );
 
-    console.log("cardInHand in handleCardClick", cardInHand);
-
-    if (cardInHand) {
-      if (data.filter((card) => card.id === id)[0].cost <= energy) {
+          setEnergy(energy - data.filter((card) => card.id === id)[0].cost);
+        }
+      } else {
         setCardsHand(
           cardsHand.map((card) => {
-            if (card.id === id) card.selected = true;
+            if (card.id === id) card.selected = false;
             return card;
           })
         );
 
-        setEnergy(energy - data.filter((card) => card.id === id)[0].cost);
+        setEnergy(energy + data.filter((card) => card.id === id)[0].cost);
       }
-    } else {
-      setCardsHand(
-        cardsHand.map((card) => {
-          if (card.id === id) card.selected = false;
-          return card;
-        })
-      );
-
-      setEnergy(energy + data.filter((card) => card.id === id)[0].cost);
     }
+
+    // vérifier si la carte est dans la hand ou dans le cardsDiscard
   };
 
   // -          onClick sur fin de tour =>
@@ -116,40 +124,50 @@ OK                   Energie NOK ? Ne pas jouer
   //       IF Turn === 0 => Modal Partie finie, bouton redirect page result
 
   const handlePlay = (e) => {
-    console.log("handlePlay", e);
-
     setHearthHealth(
-      earthHealth +
+      hearthHealth +
         cardsHand
           .filter((card) => card.selected)
           .reduce((acc, val) => acc + val.value, 0)
     );
     setCardsHand(cardsHand.filter((card) => !card.selected));
 
-    setCardsDiscard(cardsHand.filter((card) => card.selected));
+    setCardsDiscard([
+      ...cardsDiscard,
+      ...cardsHand
+        .filter((card) => card.selected)
+        .map((card) => {
+          card.selected = false;
+          return card;
+        }),
+    ]);
   };
 
   const handleFinishTurn = () => {
     setShopOpen(false);
     setTurn(turn - 1);
-    if (turn - 1 === 0) {
-      // finish game
-    } else piocheCartes();
+    setEnergy(3);
   };
 
   const buyCard = (selected) => {
-    console.log(selected);
-    console.log(data);
-    setCardsDrawPile([
-      ...cardsDrawPile,
-      data.filter((card) => card.id === selected)[0],
-    ]);
-    handleFinishTurn();
+    const inDeck = [...cardsHand, ...cardsDiscard, ...cardsDrawPile];
+
+    if (!inDeck.map((card) => card.id).includes(selected)) {
+      setCardsDrawPile([
+        ...cardsDrawPile,
+        data.filter((card) => card.id === selected)[0],
+      ]);
+
+      handleFinishTurn();
+    }
   };
 
   useEffect(() => {
-    piocheCartes();
-  }, []);
+    if (turn - 1 === 0) {
+      // finish game
+      // faire rediriger vers la route gameover
+    } else piocheCartes();
+  }, [turn]);
 
   return (
     <>
@@ -163,11 +181,12 @@ OK                   Energie NOK ? Ne pas jouer
           <div className="ShopContainer">
             <Shop
               shopOpen={shopOpen}
-              handleShop={handleShop}
+              toggleShop={toggleShop}
               cardsHand={cardsHand}
               cardsDiscard={cardsDiscard}
               cardsDrawPile={cardsDrawPile}
               buyCard={buyCard}
+              setShopOpen={setShopOpen}
             />
           </div>
         </div>
@@ -180,6 +199,7 @@ OK                   Energie NOK ? Ne pas jouer
             cardsDeck={cardsDeck}
             cardsDiscard={cardsDiscard}
             handlePlay={handlePlay}
+            handleFinishTurn={handleFinishTurn}
           />
         </div>
       </div>

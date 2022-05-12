@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card.jsx";
 
 const CardListModal = ({ title, dataSet, openModal, setOpenModal }) => {
-  console.log("modalllll", dataSet);
-
   return (
     <>
       <button
@@ -16,7 +14,7 @@ const CardListModal = ({ title, dataSet, openModal, setOpenModal }) => {
 
       <div
         id="extralarge-modal"
-        tabindex="-1"
+        tabIndex="-1"
         className={`${openModal} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full`}
       >
         <div className="relative p-4 w-full max-w-7xl h-full md:h-auto">
@@ -34,14 +32,14 @@ const CardListModal = ({ title, dataSet, openModal, setOpenModal }) => {
               >
                 <svg
                   className="w-5 h-5"
-                  fill="currentColor"
+                  fillRule="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
               </button>
