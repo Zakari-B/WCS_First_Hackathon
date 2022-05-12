@@ -1,0 +1,14 @@
+@import "./variables.scss";
+
+.hud {
+  background-color: $color5;
+  height: 3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hudPlayerName {
+  font-weight: bold;
+  font-size: 2vh;
+}
