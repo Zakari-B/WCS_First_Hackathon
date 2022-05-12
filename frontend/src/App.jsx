@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import Start from "./pages/Start";
 import Game from "./pages/Game";
 import GameOver from "./pages/GameOver";
+import Global from "./pages/Global"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/" element={<Start />} />
               <Route path="/Game" element={<Game />} />
               <Route path="/GameOver" element={<GameOver />} />
+              <Route path="/Global" element={<Global />} />
             </Routes>
             <Footer />
           </EarthHealthContextProvider>
