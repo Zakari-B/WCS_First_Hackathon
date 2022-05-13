@@ -5,8 +5,8 @@ import TurnContext from "../contexts/TurnContext";
 import "../styles/GameOver.css";
 
 const GameOver = () => {
-  let points = 50;
-  let nPoints = -50;
+  // let points = 50;
+  // let nPoints = -50;
   const { playerName, playerScore } = useContext(PlayerContext);
   const { setTurn } = useContext(TurnContext);
 
@@ -19,7 +19,7 @@ const GameOver = () => {
       <div className="endContainer">
         <div className="glassMorphEnd">
           <h1 className="title-end">Résultat</h1>
-          {points >= 0 ? (
+          {playerScore >= 0 ? (
             <div className="text-container">
               <div>
                 <img
