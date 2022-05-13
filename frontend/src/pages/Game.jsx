@@ -67,17 +67,17 @@ OK                   Energie NOK ? Ne pas jouer
       newDiscard = [];
     }
 
-    const nbCardsToGet = Math.min(5, newDrawPile.length + starterIds.length);
+    const nbCardsToGet = Math.min(5, newDrawPile.length);
 
     while (starterIds.length < nbCardsToGet) {
       const randomIndex = Math.floor(Math.random() * newDrawPile.length);
       if (!starterIds.includes(newDrawPile[randomIndex].id))
         starterIds.push(newDrawPile[randomIndex].id);
     }
-
     setCardsDrawPile(
       newDrawPile.filter((card) => !starterIds.includes(card.id))
     );
+
     setCardsDiscard([...newDiscard]);
     setCardsHand(
       cardsList
@@ -147,6 +147,8 @@ OK                   Energie NOK ? Ne pas jouer
   };
 
   const handleFinishTurn = () => {
+    setCardsDiscard([...cardsDiscard, ...cardsHand]);
+    setCardsHand([]);
     setShopOpen(false);
     setTurn(turn - 1);
     setEnergy(3);
