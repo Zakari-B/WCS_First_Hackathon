@@ -30,7 +30,7 @@
     display:flex;
     align-items:center;
     min-height:100%;
-    width:55%;
+    width:70%;
 }
 
 .GameTray {
@@ -42,7 +42,7 @@
     background-position: 40% 70%;
     height:61%;
     width:100%;
-    box-shadow: 0 -10px 15px 10px #010b1a;
+    box-shadow: 0 -10px 15px 0px #010b1a;
 }
 
 .HandInner {
@@ -60,9 +60,12 @@
     flex-wrap:wrap;
     justify-content:space-around;
     align-items:center;
-    height:95%;
-    width:95%;
+    height:90%;
+    width:100%;
     margin:auto;
+    background-color: rgba(119, 119, 119, 0.2);
+    border: 2px solid rgb(109, 109, 109);
+    border-radius: 15px;
 }
 
 .ShopCard {
