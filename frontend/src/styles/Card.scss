@@ -37,7 +37,7 @@
             font-size: 1.6rem;
             font-weight: 500;
             top: 7px;
-            left: 8px;
+            left: 7px;
             font-weight: 600;
             margin-left: 10px;
             margin-top: 10px;
@@ -110,13 +110,13 @@
         &::after {
             position: absolute;
             content: '';
-            background-image: url(../assets/svg/good-icon.svg);
-            background-repeat: no-repeat;
-            width: 40px;
-            height: 40px;
-            bottom: 7px;
-            right: 8px;
-            filter: drop-shadow(2px 2px 2px rgb(141, 141, 141)); 
+            background-color: transparent;
+            width: 50px;
+            height: 130px;
+            border-right: 1px solid #B3801D;
+            border-bottom: 1px solid #B3801D;        
+            bottom: 9px;
+            right: 9px;
         }
     }
 }
