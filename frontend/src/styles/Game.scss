@@ -1,12 +1,3 @@
-// .GameContainer {
-//     position: relative;
-//     display:flex;
-//     flex-direction:column;
-//     border : 2px solid black;
-//     min-height:100vh;
-//     min-width:100vw;
-// }
-
 .GameContainer {
     position: relative;
     display:flex;
@@ -17,12 +8,13 @@
 
 .GameContainerUpper {
     display:flex;
+    // justify-content: center;
     height:50%;
     width:100%;
 }
 
 .EarthContainer {
-    height:30%;
+    // height:30%;
     min-width:25%;
 }
 
@@ -38,18 +30,19 @@
     display:flex;
     align-items:center;
     min-height:100%;
-    width:75%;
+    width:55%;
 }
 
 .GameTray {
     position: relative;
     display:flex;
     flex-direction:row;
-    background-image: url("../assets/bg-table.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: 40% 70%;
     height:61%;
     width:100%;
+    box-shadow: 0 -10px 15px 10px #010b1a;
 }
 
 .HandInner {

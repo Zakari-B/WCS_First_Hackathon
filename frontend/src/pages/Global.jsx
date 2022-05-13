@@ -37,7 +37,7 @@ const Global = () => {
     <>
       <main className="background-global">
         <div className="container-global-table flex flex-col items-center">
-          <div className="container-earth flex flex-row justify-around pt-20">
+          <div className="container-earth flex flex-row justify-around">
             <div className="earth-text flex flex-col items-center">
               <img
                 src={green}
@@ -61,8 +61,8 @@ const Global = () => {
               </p>
             </div>
           </div>
-          <h3 className="text-white text-4xl m-4 -mt-20">
-            Valeur globale : {goodScores + evilScores}
+          <h3 className="text-white text-4xl m-4 -mt-40">
+            Valeur du score globale : {goodScores + evilScores}
           </h3>
           <Link to="/">
             <button
@@ -81,7 +81,7 @@ const Global = () => {
             <table>
               <thead>
                 <tr>
-                  <th colspan="2">Top des sauveurs</th>
+                  <th colSpan="2">Top des sauveurs</th>
                 </tr>
               </thead>
               <tbody>
@@ -110,7 +110,7 @@ const Global = () => {
             <table>
               <thead>
                 <tr>
-                  <th colspan="2">Top des destructeurs</th>
+                  <th colSpan="2">Top des destructeurs</th>
                 </tr>
               </thead>
               <tbody>
