@@ -55,10 +55,18 @@ OK                   Energie NOK ? Ne pas jouer
 
 */
 
-  const piocheCartes = (drawEffect = false) => {
+  const piocheCartes = (drawEffect = false, toRemoveId = false) => {
     let starterIds = cardsHand.map((card) => card.id);
     let newDrawPile = cardsDrawPile;
     let newDiscard = cardsDiscard;
+
+    if (toRemoveId !== false) {
+      starterIds = starterIds.filter((id) => id !== toRemoveId);
+      newDiscard = [
+        ...newDiscard,
+        cardsList.filter((card) => card.id === toRemoveId)[0],
+      ];
+    }
 
     // vérifier si pioche suffisante pour avoir 5 carte
     // si nok rajouter à pioche la défausse
@@ -68,7 +76,7 @@ OK                   Energie NOK ? Ne pas jouer
     }
 
     let nbCardsToGet = Math.min(5, newDrawPile.length + starterIds.length);
-    
+
     if (drawEffect) {
       nbCardsToGet = Math.min(
         starterIds.length + drawEffect,
@@ -89,18 +97,28 @@ OK                   Energie NOK ? Ne pas jouer
         starterIds.push(newDrawPile[randomIndex].id);
     }
 
-    setCardsDrawPile(
-      newDrawPile.filter((card) => !starterIds.includes(card.id))
+    const newDrawPileToSet = newDrawPile.filter(
+      (card) => !starterIds.includes(card.id)
     );
-    setCardsDiscard([...newDiscard]);
-    setCardsHand(
-      cardsList
-        .filter((card) => starterIds.includes(card.id))
-        .map((card) => {
-          card.selected = false;
-          return card;
-        })
-    );
+
+    const cardsListToSet = cardsList
+      .filter((card) => starterIds.includes(card.id))
+      .map((card) => {
+        card.selected = false;
+        return card;
+      });
+
+    if (drawEffect) {
+      return {
+        drawPile: newDrawPileToSet,
+        discard: [...newDiscard],
+        hand: cardsListToSet,
+      };
+    } else {
+      setCardsDrawPile(newDrawPileToSet);
+      setCardsDiscard([...newDiscard]);
+      setCardsHand(cardsListToSet);
+    }
   };
 
   const handleCardClick = (e, id) => {
@@ -148,8 +166,8 @@ OK                   Energie NOK ? Ne pas jouer
           .reduce((acc, val) => acc + val.value, 0)
     );
 
-    let updateCards = true;
     const effectNewCards = [];
+    let effectPioche = {};
 
     cardsHand
       .filter((card) => card.selected)
@@ -159,8 +177,7 @@ OK                   Energie NOK ? Ne pas jouer
 
         if (effect === "draw" || effect === "megaDraw") {
           // piocher 1-2 cartes
-          piocheCartes(effect === "draw" ? 1 : 2);
-          updateCards = false;
+          effectPioche = piocheCartes(effect === "draw" ? 1 : 2, card.id);
         }
 
         if (effect === "gain") setEnergy(Math.min(energy + 1, 3));
@@ -192,12 +209,24 @@ OK                   Energie NOK ? Ne pas jouer
             isStarterDeck: false,
           });
 
+        console.log("effectNewCards", effectNewCards);
+
         if (effect === "get") {
         }
         // ajouter un achat supplémentaire dans le shop
       });
 
-    if (updateCards) {
+    // {
+    //   drawPile: newDrawPileToSet,
+    //   discard: [...newDiscard],
+    //   hand: cardsListToSet,
+    // }
+
+    if (Object.keys(effectPioche).length) {
+      setCardsHand(effectPioche.hand);
+      setCardsDiscard([...effectPioche.discard, ...effectNewCards]);
+      setCardsDrawPile(effectPioche.drawPile);
+    } else {
       setCardsHand(cardsHand.filter((card) => !card.selected));
 
       setCardsDiscard([
