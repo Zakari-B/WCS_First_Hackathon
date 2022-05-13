@@ -42,16 +42,16 @@ const Global = () => {
 	return (
 		<>
 			<main className="background-global">
-				<div className="container-global-table flex flex-col items-center">
+				<div className="container-global-table flex flex-col items-center py-10">
 					<div className="container-earth flex flex-row justify-between">
 						<div className="earth-text flex flex-col items-center mx-10">
 							<img
 								src={green}
 								alt=""
-								className="global-img-logo select-none h-3/5 p-20"
+								className="global-img-logo select-none h-3/5"
 								onClick={() => setIsClicked(!isClicked)}
 							/>
-							<p className="text-green-500 text-3xl m-2 font-sans font-semibold">
+							<p className="text-green-500 text-3xl m-2 font-sans font-semibold pt-10">
 								Impact positif global : {goodScores}
 							</p>
 						</div>
@@ -62,7 +62,7 @@ const Global = () => {
 								className="global-img-logo select-none h-3/5"
 								onClick={() => setIsClicked2(!isClicked2)}
 							/>
-							<p className="text-red-500 text-3xl m-2 font-sans font-semibold">
+							<p className="text-red-500 text-3xl m-2 font-sans font-semibold pt-10">
 								Impact négatif global : {evilScores}
 							</p>
 						</div>
@@ -70,7 +70,7 @@ const Global = () => {
 					<h3
 						className={`${
 							globalScore >= 0 ? "text-green-500" : "text-red-500"
-						} text-5xl m-4 -mt-40 font-sans`}
+						} text-5xl m-4 font-sans`}
 					>
 						Equilibre mondial : {globalScore}
 					</h3>

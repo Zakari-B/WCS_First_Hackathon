@@ -32,7 +32,7 @@ const Board = ({
         />
       </div>
       <div className="Discard">
-        <Discard dataSet={cardsDiscard} title={"Pile de défausse"} />
+        <Discard dataSet={cardsDiscard} title={"Défausse"} />
       </div>
     </>
   );
