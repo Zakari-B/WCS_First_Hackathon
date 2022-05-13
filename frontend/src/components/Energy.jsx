@@ -18,7 +18,7 @@ const Energy = () => {
 
   return (
     <div className="batteryContainer">
-      <img src={batteryImg} alt="battery" />
+      <img src={batteryImg} draggable={false} alt="battery" />
       {batteryState.map(
         (bar, barIndex) =>
           bar && (
