@@ -32,7 +32,7 @@ const Earth = () => {
           src={EarthGreen}
           alt="EarthGreen"
           className="earthImg earthGreen"
-          style={{ filter: `opacity(${Math.max(0, hearthHealth * 4) / 25})` }}
+          style={{ filter: `opacity(${Math.max(0, hearthHealth * 2) / 50})` }}
           draggable={false}
         />
         <img
@@ -40,7 +40,7 @@ const Earth = () => {
           alt="EarthDead"
           className="earthImg earthDead"
           style={{
-            filter: `opacity(${Math.max(0, 1 - hearthHealth * 4) / 25})`,
+            filter: `opacity(${Math.max(0, 1 - hearthHealth * 2) / 50})`,
           }}
           draggable={false}
         />
