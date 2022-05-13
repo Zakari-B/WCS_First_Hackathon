@@ -10,7 +10,7 @@ const CardListModal = ({ title, dataSet, openModal, setOpenModal }) => {
       <div
         className={`${openModal}
 				} w-screen h-screen absolute left-0 top-0 right-0 bottom-0 z-50 p-40 flex justify-center align-center cardListModal ${
-          title === "Pile de défausse" ? "translationLeft" : "translationUp"
+          title === "Défausse" ? "translationLeft" : "translationUp"
         }`}
       >
         <div
