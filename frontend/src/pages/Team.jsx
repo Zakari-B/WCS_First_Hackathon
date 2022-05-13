@@ -5,7 +5,6 @@ const Team = () => {
 	return (
 		<div className="big-container-team">
 			<h1 className="title-team">Team Undefined</h1>
-			<p>
 			<div className="profil-team">
 				<div className="team-box">
 					<img
@@ -128,7 +127,7 @@ const Team = () => {
 					<p>Ophélie</p>
 				</div>
 			</div>
-
+		</div>
 	);
 };
 
