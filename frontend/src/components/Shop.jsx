@@ -41,7 +41,7 @@ const Shop = ({
   }, [cardsHand, cardsDiscard, cardsDrawPile]);
 
   return (
-    <div className="ShopDiv">
+    <div className={`ShopDiv ${shopOpen ? "ShopDiv-show" : ""}`}>
       {shopOpen
         ? choices &&
           choices.map((card) => (
