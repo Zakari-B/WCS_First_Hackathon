@@ -1,12 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PlayerContext from "../contexts/PlayerContext";
+import TurnContext from "../contexts/TurnContext";
 import "../styles/GameOver.css";
 
 const GameOver = () => {
   let points = 50;
   let nPoints = -50;
   const { playerName, playerScore } = useContext(PlayerContext);
+  const { setTurn } = useContext(TurnContext);
+
+  useEffect(() => {
+    setTurn(15);
+  }, []);
 
   return (
     <>
