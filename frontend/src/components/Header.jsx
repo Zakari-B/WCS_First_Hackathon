@@ -16,7 +16,7 @@ const Header = () => {
             <li className="navigation-name">
               <Link to="/">Accueil</Link>
             </li>
-            <li>Tour: {turn--}
+            <li>Tour restant: {turn-1}
             </li>
             <li>
               <Hud />
