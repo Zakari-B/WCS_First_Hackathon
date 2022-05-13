@@ -23,18 +23,17 @@ const Global = () => {
   }, []);
 
   useEffect(() => {
-    setGoodScores(
-      highScores
-        .filter((user) => user.score > 0)
-        .reduce((a, b) => a + b.score, 0)
-    );
+    const newGoodScores = highScores
+      .filter((user) => user.score > 0)
+      .reduce((a, b) => a + b.score, 0);
+    const newEvilScores = highScores
+      .filter((user) => user.score < 0)
+      .reduce((a, b) => a + b.score, 0);
 
-    setEvilScores(
-      highScores
-        .filter((user) => user.score < 0)
-        .reduce((a, b) => a + b.score, 0)
-    );
-    setGlobalScore(goodScores + evilScores);
+    setGoodScores(newGoodScores);
+
+    setEvilScores(newEvilScores);
+    setGlobalScore(newGoodScores + newEvilScores);
   }, [highScores]);
 
   return (
@@ -142,7 +141,7 @@ const Global = () => {
             </table>
           </div>
           <Link to="/Team">
-            <div className="absolute bottom-0 right-0 p-6 flex flex-col items-center text-white hover:text-green-500 hover:animate-bounce">
+            <div className="absolute bottom-0 right-0 p-6 flex flex-col items-center text-white hover:text-green-500 teamIconJulien">
               <img src={teamIcon} alt="our team" className="w-32 h-auto" />
               <p className="font-sans -mt-4">Meet the team</p>
             </div>
