@@ -11,6 +11,7 @@ const GameOver = () => {
 	useEffect(() => {
 		setTurn(12);
 	}, []);
+	console.log(playerScore);
 
 	return (
 		<>
@@ -28,18 +29,10 @@ const GameOver = () => {
 									className="img-end"
 								/>
 							</div>
-							<p
-								className={`${
-									playerScore >= 0 ? "text-green-500" : "text-red-500"
-								} text-5xl m-4 font-sans`}
-							>
+							<p className="text-green-500 text-5xl m-4 font-sans">
 								Impact de {playerName} : {playerScore} points.
 							</p>
-							<p
-								className={`${
-									playerScore >= 0 ? "text-green-500" : "text-red-500"
-								} text-5xl m-4 font-sans`}
-							>
+							<p className="text-green-500 text-5xl m-4 font-sans">
 								“ Bravo, tu as réussi à sauver la Terre ! ”
 							</p>
 						</div>
@@ -54,10 +47,10 @@ const GameOver = () => {
 									className="img-end"
 								/>
 							</div>
-							<p className="paragraph-end">
+							<p className="text-red-500 text-5xl m-4 font-sans">
 								Impact de {playerName} : {playerScore} points.
 							</p>
-							<p className="paragraph-end">
+							<p className="text-red-500 text-5xl m-4 font-sans">
 								“ Bravo, tu as réussi à détuire la Terre ! ”
 							</p>
 						</div>
