@@ -4,14 +4,13 @@ import "../styles/Board.scss";
 import "../styles/Elements.scss";
 
 const CardListModal = ({ title, dataSet, openModal, setOpenModal }) => {
-  console.log("CardListModal", title);
-
   return (
     <>
       <p className="pioche-txt">{title}</p>
       <div
-        className={`${openModal} w-screen h-screen absolute left-0 top-0 right-0 bottom-0 z-50 p-40 flex justify-center align-center cardListModal ${
-          title === "eifjezoi" ? "translationLeft" : "translationUp"
+        className={`${openModal}
+				} w-screen h-screen absolute left-0 top-0 right-0 bottom-0 z-50 p-40 flex justify-center align-center cardListModal ${
+          title === "Pile de défausse" ? "translationLeft" : "translationUp"
         }`}
       >
         <div

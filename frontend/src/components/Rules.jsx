@@ -49,8 +49,7 @@ const Rules = () => {
 						politicien et une éolienne. Chaque carte est soit positive pour la
 						planète soit négative.
 						<br /> <br />
-						Le but du jeu : jouer en même temps que d’autres joueurs pour
-						impacter selon votre goût l’état de la planète.
+						Le but du jeu : impacter selon votre goût l’état de la planète.
 					</p>
 					<br />
 					<div className="flex justify-around">
@@ -71,7 +70,7 @@ const Rules = () => {
 					</h2>
 					<p className="text-xl">
 						<br />
-						La partie dure 20 tours. Chaque tour, vous avez 3 énergies qui vous
+						La partie dure 12 tours. Chaque tour, vous avez 3 énergies qui vous
 						permettent de jouer des cartes. Une fois que vous avez fini votre
 						tour, vous pouvez cliquer sur “Terminer le tour”.
 						<br /> Vous pourrez alors choisir une nouvelle carte à ajouter à
