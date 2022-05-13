@@ -31,6 +31,7 @@ const Shop = ({
       available
         .filter((card) => cardsInShop.includes(card.id))
         .map((card) => {
+          card.selected = false;
           return card;
         })
     );
