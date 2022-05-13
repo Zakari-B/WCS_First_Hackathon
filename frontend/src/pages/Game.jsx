@@ -4,19 +4,20 @@ import Earth from "../components/Earth.jsx";
 import Shop from "../components/Shop.jsx";
 import Board from "../components/Board.jsx";
 import "../styles/Game.scss";
-import data from "../assets/cards.json";
 import EnergyContext from "../contexts/EnergyContext";
 import EarthHealthContext from "../contexts/EarthHealthContext";
+import CardsContext from "../contexts/CardsContext";
 
 const Game = () => {
+  const { cardsList } = useContext(CardsContext);
   const [shopOpen, setShopOpen] = useState(false);
   const [cardsDeck, setCardsDeck] = useState(
-    data.filter((e) => e.isStarterDeck)
+    cardsList.filter((e) => e.isStarterDeck)
   );
   const [cardsHand, setCardsHand] = useState([]);
   const [cardsDiscard, setCardsDiscard] = useState([]);
   const [cardsDrawPile, setCardsDrawPile] = useState(
-    data.filter((e) => e.isStarterDeck)
+    cardsList.filter((e) => e.isStarterDeck)
   );
   const [turn, setTurn] = useState(15);
   const { energy, setEnergy } = useContext(EnergyContext);
@@ -79,7 +80,7 @@ OK                   Energie NOK ? Ne pas jouer
     );
     setCardsDiscard([...newDiscard]);
     setCardsHand(
-      data
+      cardsList
         .filter((card) => starterIds.includes(card.id))
         .map((card) => {
           card.selected = false;
@@ -94,7 +95,7 @@ OK                   Energie NOK ? Ne pas jouer
         .selected;
 
       if (cardInHand) {
-        if (data.filter((card) => card.id === id)[0].cost <= energy) {
+        if (cardsList.filter((card) => card.id === id)[0].cost <= energy) {
           setCardsHand(
             cardsHand.map((card) => {
               if (card.id === id) card.selected = true;
@@ -102,7 +103,9 @@ OK                   Energie NOK ? Ne pas jouer
             })
           );
 
-          setEnergy(energy - data.filter((card) => card.id === id)[0].cost);
+          setEnergy(
+            energy - cardsList.filter((card) => card.id === id)[0].cost
+          );
         }
       } else {
         setCardsHand(
@@ -112,7 +115,7 @@ OK                   Energie NOK ? Ne pas jouer
           })
         );
 
-        setEnergy(energy + data.filter((card) => card.id === id)[0].cost);
+        setEnergy(energy + cardsList.filter((card) => card.id === id)[0].cost);
       }
     }
 
@@ -155,7 +158,7 @@ OK                   Energie NOK ? Ne pas jouer
     if (!inDeck.map((card) => card.id).includes(selected)) {
       setCardsDrawPile([
         ...cardsDrawPile,
-        data.filter((card) => card.id === selected)[0],
+        cardsList.filter((card) => card.id === selected)[0],
       ]);
 
       handleFinishTurn();

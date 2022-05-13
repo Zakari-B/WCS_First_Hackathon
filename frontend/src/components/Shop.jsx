@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Card from "./Card.jsx";
-import cardsList from "../assets/cards.json";
+import CardsContext from "../contexts/CardsContext";
 
 const Shop = ({
   shopOpen,
@@ -11,6 +11,7 @@ const Shop = ({
   buyCard,
   setShopOpen,
 }) => {
+  const { cardsList } = useContext(CardsContext);
   const [choices, setChoices] = useState();
   const checkAlreadyExist = () => {
     const inDeck = [...cardsHand, ...cardsDiscard, ...cardsDrawPile].map(
