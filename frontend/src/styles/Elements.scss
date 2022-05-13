@@ -4,3 +4,63 @@
     color: #ffffff;
 }
 
+.playButton {
+    z-index: 1;
+    top: 5px;
+    left:35%;
+    height: 50px;
+    width:120px;
+    padding-top: 4px;
+}
+
+.ShopButton,
+.finishButton {
+    position:absolute;
+    z-index: 1;
+    top: 5px;
+    right:35%;
+    height: 50px;
+    width:150px;
+    padding-top: 4px;
+}
+
+.btn-type {
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Overpass', sans-serif;
+    text-decoration: none;
+    overflow: hidden;
+    right:35%;
+    border-radius:3px;
+    border: 2px solid rgb(101, 187, 190);
+    background-color: transparent;
+    color: #ffffff;
+  }
+  
+  .btn-type:hover {
+    transition: all .5s;
+    box-shadow: 1px 1px 15px 10px rgba(101, 187, 190, 0.356);
+  }
+  
+  .btn-type:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgb(101, 187, 190),
+      transparent
+    );
+    transition: all .7s;
+  }
+  
+  .btn-type:hover:before {
+    left: 100%;
+  }
+  

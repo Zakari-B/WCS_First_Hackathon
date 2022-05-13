@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import batteryImg from "../assets/battery.png";
+import batteryImg from "../assets/battery-light.png";
 import "../styles/Energy.scss";
 import EnergyContext from "../contexts/EnergyContext";
 

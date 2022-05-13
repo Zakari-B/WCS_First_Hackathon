@@ -12,6 +12,8 @@ const Board = ({
   handleCardClick,
   handlePlay,
   handleFinishTurn,
+  shopOpen,
+  setShopOpen,
 }) => {
   return (
     <>
@@ -25,6 +27,8 @@ const Board = ({
           cardsDiscard={cardsDiscard}
           handlePlay={handlePlay}
           handleFinishTurn={handleFinishTurn}
+          shopOpen={shopOpen}
+          setShopOpen={setShopOpen}
         />
       </div>
       <div className="Discard">

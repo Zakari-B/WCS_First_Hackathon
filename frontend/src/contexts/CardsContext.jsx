@@ -10,7 +10,6 @@ export function CardsContextProvider({ children }) {
   const [cardsList, setCardsList] = useState(data);
 
   return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <CardsContext.Provider value={{ cardsList, setCardsList }}>
       {children}
     </CardsContext.Provider>
