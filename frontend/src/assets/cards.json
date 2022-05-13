@@ -182,7 +182,7 @@
         "positif": true,
         "text": "1 soin. Détruis une carte de ton deck",
         "value": 1,
-        "effect": "remove",
+        "effect": "get",
         "image": "/carton.png",
         "isStarterDeck": false
     },
@@ -270,7 +270,7 @@
         "positif": false,
         "text": "1 dégât. Détruise une carte de ton deck",
         "value": -1,
-        "effect": "remove",
+        "effect": "get",
         "image": "/plastique.png",
         "isStarterDeck": false
     },
