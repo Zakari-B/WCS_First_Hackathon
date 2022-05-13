@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CardListModal from "./CardListModal.jsx";
+import CardListDiscard from "./CardListDiscard.jsx";
 import "../styles/Pioche.scss";
 import "../styles/Card.scss";
 
@@ -8,7 +8,7 @@ function Discard({ title, dataSet }) {
 
   return (
     <div className="piocheContainer">
-      <CardListModal
+      <CardListDiscard
         title={title}
         dataSet={dataSet}
         openModal={openModal}
@@ -23,7 +23,7 @@ function Discard({ title, dataSet }) {
             style={{
               position: "absolute",
               top: `${4 + cardIndex * 1}vh`,
-              left: `${1 + cardIndex * 1}vh`,
+              right: `${1 + cardIndex * 1}vh`,
             }}
             onClick={() => setOpenModal("visible")}
           >
