@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CardListDiscard from "./CardListDiscard.jsx";
+import CardListModal from "./CardListModal.jsx";
 import "../styles/Pioche.scss";
 import "../styles/Card.scss";
 
@@ -8,7 +8,7 @@ function Discard({ title, dataSet }) {
 
   return (
     <div className="piocheContainer">
-      <CardListDiscard
+      <CardListModal
         title={title}
         dataSet={dataSet}
         openModal={openModal}
