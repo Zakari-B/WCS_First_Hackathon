@@ -29,27 +29,28 @@
     padding-bottom: 1%
 }
 
-// .PlayButton {
-//     position:absolute;
-//     z-index: 1;
-//     top:45%;
-//     left:35%;
-//     height:10%;
-//     width:10%;
-//     border-radius:10px;
-//     background-color:rgb(101, 170, 101);
-// }
+.PlayButton {
+    position:absolute;
+    z-index: 1;
+    top:45%;
+    left:35%;
+    height:10%;
+    width:10%;
+    border-radius:10px;
+    background-color:rgb(101, 170, 101);
+}
 
-// .finishButton {
-//     position:absolute;
-//     z-index: 1;
-//     top:45%;
-//     left:55%;
-//     height:10%;
-//     width:10%;
-//     border-radius:10px;
-//     background-color:rgb(101, 170, 101);
-// }
+.finishButton{
+    position:absolute;
+    z-index: 1;
+    top:45%;
+    left:45%;
+    height:10%;
+    width:10%;
+    border: 2px solid gold;
+    border-radius:10px;
+    background-color:rgb(101, 170, 101);
+}
 
 .ShopButton {
     position:absolute;

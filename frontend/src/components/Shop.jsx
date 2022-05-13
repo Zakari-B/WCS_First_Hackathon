@@ -49,13 +49,15 @@ const Shop = ({
 
   return (
     <>
-      <button
-        className="ShopButton"
-        type="button"
-        onClick={() => setShopOpen(true)}
-      >
-        OPEN SHOP
-      </button>
+      {!shopOpen && (
+        <button
+          className="ShopButton"
+          type="button"
+          onClick={() => setShopOpen(true)}
+        >
+          OPEN SHOP
+        </button>
+      )}
 
       <div className="ShopDiv">
         {shopOpen

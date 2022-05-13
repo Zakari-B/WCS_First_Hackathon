@@ -8,6 +8,7 @@ import EnergyContext from "../contexts/EnergyContext";
 import EarthHealthContext from "../contexts/EarthHealthContext";
 import Footer from "../components/Footer";
 import CardsContext from "../contexts/CardsContext";
+import { useNavigate } from "react-router-dom";
 
 const Game = () => {
   const { cardsList } = useContext(CardsContext);
@@ -23,6 +24,8 @@ const Game = () => {
   const [turn, setTurn] = useState(15);
   const { energy, setEnergy } = useContext(EnergyContext);
   const { hearthHealth, setHearthHealth } = useContext(EarthHealthContext);
+
+  let navigate = useNavigate();
 
   const toggleShop = () => {
     setCardsHand(
@@ -266,8 +269,7 @@ OK                   Energie NOK ? Ne pas jouer
 
   useEffect(() => {
     if (turn - 1 === 0) {
-      // finish game
-      // faire rediriger vers la route gameover
+      navigate("/GameOver", { replace: true });
     } else piocheCartes();
   }, [turn]);
 
@@ -302,6 +304,7 @@ OK                   Energie NOK ? Ne pas jouer
             cardsDiscard={cardsDiscard}
             handlePlay={handlePlay}
             handleFinishTurn={handleFinishTurn}
+            shopOpen={shopOpen}
           />
         </div>
       </div>
