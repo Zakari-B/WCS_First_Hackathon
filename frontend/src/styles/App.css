@@ -134,8 +134,8 @@ section {
   display: block;
 }
 body {
-  font-family: "Poppins", sans-serif;
   line-height: 1;
+  background-color: #010b1a;
   margin: 0;
 }
 ol,

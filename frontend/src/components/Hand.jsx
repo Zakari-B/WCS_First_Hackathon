@@ -14,14 +14,18 @@ const Hand = ({
   return (
     <div className="HandInner">
       {cardsHand.filter((card) => card.selected).length ? (
-        <button type="button" className="PlayButton" onClick={handlePlay}>
+        <button
+          type="button"
+          className="btn-type playButton"
+          onClick={handlePlay}
+        >
           PLAY
         </button>
       ) : null}
 
       {!shopOpen && (
         <button
-          className="ShopButton"
+          className="ShopButton btn-type"
           type="button"
           onClick={() => setShopOpen(true)}
         >
@@ -32,7 +36,7 @@ const Hand = ({
       {shopOpen && (
         <button
           type="button"
-          className="finishButton"
+          className="finishButton btn-type"
           onClick={handleFinishTurn}
         >
           FINISH TURN
