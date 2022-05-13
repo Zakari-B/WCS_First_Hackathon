@@ -1,0 +1,39 @@
+.big-container-team {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.title-team {
+	font-size: 3rem;
+	font-family: var(--font-family-text);
+	color: var(--text-color);
+	text-align: center;
+	padding-top: 5%;
+	padding-bottom: 10%;
+}
+.team-box {
+	display: flex;
+	flex-direction: column;
+	margin-left: 5%;
+	background-color: white;
+	align-items: center;
+	border-radius: 100%;
+	padding: 2%;
+}
+.icon {
+	width: 80%;
+}
+.avatar {
+	width: 80%;
+	border-radius: 50%;
+}
+.icon-box {
+	display: flex;
+	width: 80%;
+}
+.profil-team {
+	display: flex;
+	margin-left: 10%;
+	margin-right: 10%;
+	flex-direction: row;
+}
