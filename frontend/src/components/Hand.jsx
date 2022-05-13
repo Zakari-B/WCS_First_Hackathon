@@ -2,7 +2,13 @@ import React from "react";
 import Energy from "../components/Energy.jsx";
 import Card from "../components/Card.jsx";
 
-const Hand = ({ cardsHand, handleCardClick, handlePlay, handleFinishTurn }) => {
+const Hand = ({
+  cardsHand,
+  handleCardClick,
+  handlePlay,
+  handleFinishTurn,
+  shopOpen,
+}) => {
   return (
     <div className="HandInner">
       {cardsHand.filter((card) => card.selected).length ? (
@@ -11,9 +17,16 @@ const Hand = ({ cardsHand, handleCardClick, handlePlay, handleFinishTurn }) => {
         </button>
       ) : null}
 
-      <button type="button" className="finishButton" onClick={handleFinishTurn}>
-        FINISH TURN
-      </button>
+      {shopOpen && (
+        <button
+          type="button"
+          className="finishButton"
+          onClick={handleFinishTurn}
+        >
+          FINISH TURN
+        </button>
+      )}
+
       <Energy />
       <div className="CardContainer">
         {cardsHand.map((card) => (

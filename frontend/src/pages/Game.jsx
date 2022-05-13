@@ -299,6 +299,7 @@ OK                   Energie NOK ? Ne pas jouer
             cardsDiscard={cardsDiscard}
             handlePlay={handlePlay}
             handleFinishTurn={handleFinishTurn}
+            shopOpen={shopOpen}
           />
         </div>
       </div>
