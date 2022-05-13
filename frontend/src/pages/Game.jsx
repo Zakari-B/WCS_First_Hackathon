@@ -24,6 +24,7 @@ const Game = () => {
   const [cardsDrawPile, setCardsDrawPile] = useState(
     cardsList.filter((e) => e.isStarterDeck)
   );
+  const [healthChange, setHealthChange] = useState(false);
   const { turn, setTurn } = useContext(TurnContext);
   const { energy, setEnergy } = useContext(EnergyContext);
   const { hearthHealth, setHearthHealth } = useContext(EarthHealthContext);
@@ -144,12 +145,13 @@ const Game = () => {
   };
 
   const handlePlay = (e) => {
-    setHearthHealth(
-      hearthHealth +
-        cardsHand
-          .filter((card) => card.selected)
-          .reduce((acc, val) => acc + val.value, 0)
-    );
+    const healthChange = cardsHand
+      .filter((card) => card.selected)
+      .reduce((acc, val) => acc + val.value, 0);
+
+    setHealthChange(healthChange);
+
+    setHearthHealth(hearthHealth + healthChange);
 
     const effectNewCards = [];
     let effectPioche = {};
@@ -244,7 +246,6 @@ const Game = () => {
         (today.getMonth() + 1).toString().padStart(2, "0") +
         "-" +
         today.getDate().toString().padStart(2, "0");
-
       axios.post("http://localhost:5000/scores", {
         playerName: playerName,
         score: hearthHealth,
@@ -261,7 +262,7 @@ const Game = () => {
       <div className="GameContainer">
         <div className="GameContainerUpper">
           <div className="EarthContainer">
-            <Earth />
+            <Earth healthChange={healthChange} />
           </div>
 
           <div className="ShopContainer">

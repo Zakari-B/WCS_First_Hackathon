@@ -37,7 +37,6 @@ const Global = () => {
     setGlobalScore(goodScores + evilScores);
   }, [highScores]);
 
-  console.log(goodScores + evilScores);
   return (
     <>
       <main className="background-global">
