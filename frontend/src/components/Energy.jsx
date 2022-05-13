@@ -16,13 +16,9 @@ const Energy = () => {
     );
   }, [energy]);
 
-  useEffect(() => {
-    console.log("**** batteryState", batteryState);
-  });
-
   return (
     <div className="batteryContainer">
-      <img src={batteryImg} alt="battery" />
+      <img src={batteryImg} draggable={false} alt="battery" />
       {batteryState.map(
         (bar, barIndex) =>
           bar && (

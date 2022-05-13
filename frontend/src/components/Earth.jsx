@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import EarthGreen from "../assets/earth_green.png";
 import EarthDead from "../assets/earth_polluted.png";
 import gradientBackground from "../assets/gradientBackground.jpg";
@@ -7,7 +7,7 @@ import EarthHealthContext from "../contexts/EarthHealthContext";
 import "../styles/Earth.scss";
 
 const Earth = () => {
-  const { earthHealth } = useContext(EarthHealthContext); // range [-100 +100]
+  const { hearthHealth } = useContext(EarthHealthContext); // range [-100 +100]
 
   return (
     <>
@@ -22,14 +22,14 @@ const Earth = () => {
           src={EarthGreen}
           alt="EarthGreen"
           className="earthImg earthGreen"
-          style={{ filter: `opacity(${(earthHealth + 100) / 200})` }}
+          style={{ filter: `opacity(${(hearthHealth + 100) / 200})` }}
           draggable={false}
         />
         <img
           src={EarthDead}
           alt="EarthDead"
           className="earthImg earthDead"
-          style={{ filter: `opacity(${1 - (earthHealth + 100) / 200})` }}
+          style={{ filter: `opacity(${1 - (hearthHealth + 100) / 200})` }}
           draggable={false}
         />
       </div>

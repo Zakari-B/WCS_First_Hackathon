@@ -3,13 +3,16 @@ import Energy from "../components/Energy.jsx";
 import Card from "../components/Card.jsx";
 import "../styles/Elements.scss";
 
-const Hand = ({ cardsHand, handleCardClick, handlePlay }) => {
+const Hand = ({ cardsHand, handleCardClick, handlePlay, handleFinishTurn }) => {
   return (
     <div className="HandInner">
-      <button type="button" className="PlayButton" onClick={handlePlay}>
-        PLAY
-      </button>
-      <button type="button" className="finishButton" onClick={handlePlay}>
+      {cardsHand.filter((card) => card.selected).length ? (
+        <button type="button" className="PlayButton" onClick={handlePlay}>
+          PLAY
+        </button>
+      ) : null}
+
+      <button type="button" className="finishButton" onClick={handleFinishTurn}>
         FINISH TURN
       </button>
       <Energy />

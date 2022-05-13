@@ -1,5 +1,6 @@
 .batteryContainer {
-  margin: auto;
+  user-select: none;
+  margin:auto;
   position: relative;
   transform: rotate(90deg);
   height: 130px;
