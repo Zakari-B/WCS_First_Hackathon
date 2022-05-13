@@ -1,6 +1,7 @@
 import React from "react";
 import Energy from "../components/Energy.jsx";
 import Card from "../components/Card.jsx";
+import "../styles/Elements.scss";
 
 const Hand = ({ cardsHand, handleCardClick, handlePlay, handleFinishTurn }) => {
   return (

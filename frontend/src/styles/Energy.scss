@@ -2,14 +2,15 @@
   user-select: none;
   margin:auto;
   position: relative;
-  height: 150px;
-  width: 75px;
+  transform: rotate(90deg);
+  height: 130px;
+  width: 65px;
 
   .batteryBar {
-      position: absolute;
-      
+    position: absolute;
     left: 20%;
-      background-color: green;
+    background-color: green;
+    border: 1px solid #000000;
     width: 60%;
     height: 16%;
   }
