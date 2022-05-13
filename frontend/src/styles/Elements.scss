@@ -1,0 +1,30 @@
+.pioche-txt {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+
+
+.PlayButton {
+    position:absolute;
+    z-index: 1;
+    top: 20px;
+    left:35%;
+    height: 50px;
+    width:100px;
+    border-radius:3px;
+    border: 2px solid #000000;
+    background-color:rgb(101, 187, 190);
+}
+
+.finishButton {
+    position:absolute;
+    z-index: 1;
+    top: 20px;
+    left:55%;
+    height: 50px;
+    width:150px;
+    border-radius:3px;
+    border: 2px solid #000000;
+    background-color:rgb(101, 187, 190);
+}
