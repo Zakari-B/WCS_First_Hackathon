@@ -54,7 +54,7 @@ OK                   Energie NOK ? Ne pas jouer
 
 */
 
-  const piocheCartes = () => {
+  const piocheCartes = (drawEffect = false) => {
     let starterIds = cardsHand.map((card) => card.id);
     let newDrawPile = cardsDrawPile;
     let newDiscard = cardsDiscard;
@@ -66,7 +66,21 @@ OK                   Energie NOK ? Ne pas jouer
       newDiscard = [];
     }
 
-    const nbCardsToGet = Math.min(5, newDrawPile.length + starterIds.length);
+    let nbCardsToGet = Math.min(5, newDrawPile.length + starterIds.length);
+    
+    if (drawEffect) {
+      nbCardsToGet = Math.min(
+        starterIds.length + drawEffect,
+        newDrawPile.length + starterIds.length
+      );
+      if (
+        cardsDrawPile.length + cardsHand.length <
+        starterIds.length + drawEffect
+      ) {
+        newDrawPile = [...newDrawPile, ...newDiscard];
+        newDiscard = [];
+      }
+    }
 
     while (starterIds.length < nbCardsToGet) {
       const randomIndex = Math.floor(Math.random() * newDrawPile.length);
@@ -130,17 +144,70 @@ OK                   Energie NOK ? Ne pas jouer
           .filter((card) => card.selected)
           .reduce((acc, val) => acc + val.value, 0)
     );
-    setCardsHand(cardsHand.filter((card) => !card.selected));
 
-    setCardsDiscard([
-      ...cardsDiscard,
-      ...cardsHand
-        .filter((card) => card.selected)
-        .map((card) => {
-          card.selected = false;
-          return card;
-        }),
-    ]);
+    let updateCards = true;
+    const effectNewCards = [];
+
+    cardsHand
+      .filter((card) => card.selected)
+      .filter((card) => card.effect !== null)
+      .forEach((card) => {
+        const effect = card.effect;
+
+        if (effect === "draw" || effect === "megaDraw") {
+          // piocher 1-2 cartes
+          piocheCartes(effect === "draw" ? 1 : 2);
+          updateCards = false;
+        }
+
+        if (effect === "gain") setEnergy(Math.min(energy + 1, 3));
+
+        if (effect === "megaGain") setEnergy(Math.min(energy + 2, 3));
+
+        if (effect === "addArbre")
+          effectNewCards.push({
+            id: data.reduce((acc, val) => Math.max(acc, val.id), 0) + 1,
+            name: "Arbre",
+            cost: 1,
+            positif: true,
+            text: "1 soin",
+            value: 1,
+            effect: null,
+            image: "/tree.png",
+            isStarterDeck: false,
+          });
+        if (effect === "addUsine")
+          effectNewCards.push({
+            id: data.reduce((acc, val) => Math.max(acc, val.id), 0) + 1,
+            name: "Usine",
+            cost: 1,
+            positif: false,
+            text: "1 dégât",
+            value: -1,
+            effect: null,
+            image: "/factory.png",
+            isStarterDeck: false,
+          });
+
+        if (effect === "get") {
+        }
+        // ajouter un achat supplémentaire dans le shop
+      });
+
+    if (updateCards) {
+      setCardsHand(cardsHand.filter((card) => !card.selected));
+
+      setCardsDiscard([
+        ...cardsDiscard,
+        ...cardsHand
+          .filter((card) => card.selected)
+          .map((card) => {
+            card.selected = false;
+            return card;
+          }),
+        ...effectNewCards,
+      ]);
+    }
   };
 
   const handleFinishTurn = () => {
