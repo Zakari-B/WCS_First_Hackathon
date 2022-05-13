@@ -1,67 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Card from "./Card.jsx";
 import "../styles/Board.scss";
 import "../styles/Elements.scss";
 
 const CardListModal = ({ title, dataSet, openModal, setOpenModal }) => {
-  return (
-    <>
-      <p className="pioche-txt">{title}</p>
-
-      <div
-        id="extralarge-modal"
-        tabIndex="-1"
-        className={`${openModal} overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full`}
-      >
-        <div className="relative p-4 w-full max-w-7xl h-full md:h-auto">
-          {/* <!-- Modal content --> */}{" "}
-          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            {/* <!-- Modal header --> */}{" "}
-            <div className="flex justify-between items-center p-5 rounded-t border-b dark:border-gray-600">
-              <h3 className="text-xl font-medium text-gray-900 dark:text-white">
-                {title}
-              </h3>
-              <button
-                type="button"
-                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                onClick={() => setOpenModal("hidden")}
-              >
-                <svg
-                  className="w-5 h-5"
-                  fillRule="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-            {/* <!-- Modal body --> */}
-            <div className="p-6 space-y-6 flex justify-center items-center">
-              {dataSet &&
-                dataSet.map((card, cardIndex) => (
-                  <Card key={cardIndex} card={card} />
-                ))}
-            </div>
-            {/* <!-- Modal footer --> */}
-            <div className="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-              <button
-                onClick={() => setOpenModal("hidden")}
-                type="button"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Fermer
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div
+				className={`${openModal}
+				} w-screen h-screen absolute left-0 top-0 right-0 bottom-0 z-50 p-40 flex justify-center align-center cardListModal ${
+					title === "Pile de défausse" ? "translationLeft" : "translationUp"
+				}`}
+			>
+				<div
+					className="text-gray-800 font-sans bg-gray-200/80 p-6 flex flex-col"
+					onClick={() => setOpenModal("hidden")}
+				>
+					<h2 className="text-5xl font-semibold self-center m-4 mb-8">
+						{title}
+					</h2>
+					<div className="flex justify-around m-8">
+						{dataSet &&
+							dataSet.map((card, cardIndex) => (
+								<Card key={cardIndex} card={card} />
+							))}
+					</div>
+					<div>
+						<button
+							type="button"
+							onClick={() => setOpenModal("hidden")}
+							className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-4xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
+						>
+							<p className="relative px-6 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+								Fermer
+							</p>
+						</button>
+					</div>
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default CardListModal;
