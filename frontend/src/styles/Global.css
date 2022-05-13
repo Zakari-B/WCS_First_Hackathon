@@ -1,0 +1,43 @@
+.background-global{
+    background-image: url("../assets/bg-table.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.global-img-logo{
+    width: 30%;
+}
+.container-earth{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.container-global-table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+table,
+td {
+    background-color: rgba(224, 221, 221, 0.397);
+    border: 1px solid #333;
+    padding: 3%;
+    width: 20vw;
+}
+th {
+    padding: 4%;
+}
+td{
+    font-family: var(--font-family-text);
+    font-weight: 800;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
