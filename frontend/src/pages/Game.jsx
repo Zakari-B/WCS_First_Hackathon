@@ -169,7 +169,7 @@ OK                   Energie NOK ? Ne pas jouer
 
         if (effect === "addArbre")
           effectNewCards.push({
-            id: data.reduce((acc, val) => Math.max(acc, val.id), 0) + 1,
+            id: cardsList.reduce((acc, val) => Math.max(acc, val.id), 0) + 1,
             name: "Arbre",
             cost: 1,
             positif: true,
@@ -181,7 +181,7 @@ OK                   Energie NOK ? Ne pas jouer
           });
         if (effect === "addUsine")
           effectNewCards.push({
-            id: data.reduce((acc, val) => Math.max(acc, val.id), 0) + 1,
+            id: cardsList.reduce((acc, val) => Math.max(acc, val.id), 0) + 1,
             name: "Usine",
             cost: 1,
             positif: false,
