@@ -5,6 +5,7 @@ import Rules from "./Rules.jsx"
 import "../styles/Header.css";
 import logo from "../assets/logo-small.png";
 const Header = () => {
+  let tour = 1;
   return (
     <>
       <div>
@@ -12,10 +13,9 @@ const Header = () => {
           <img src={logo} alt="" className="logo-nav"/>
           <ul className="navigation">
             <li className="navigation-name">
-              <Link to="/">Jeu</Link>
+              <Link to="/">Accueil</Link>
             </li>
-            <li className="navigation-name">
-              <Link to="/Global">Global</Link>
+            <li>Tour: {tour++}
             </li>
             <li>
               <Hud />
