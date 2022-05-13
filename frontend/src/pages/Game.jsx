@@ -6,6 +6,7 @@ import Board from "../components/Board.jsx";
 import "../styles/Game.scss";
 import EnergyContext from "../contexts/EnergyContext";
 import EarthHealthContext from "../contexts/EarthHealthContext";
+import Footer from "../components/Footer";
 import CardsContext from "../contexts/CardsContext";
 
 const Game = () => {
@@ -304,6 +305,7 @@ OK                   Energie NOK ? Ne pas jouer
           />
         </div>
       </div>
+      <Footer />
     </>
   );
 };
