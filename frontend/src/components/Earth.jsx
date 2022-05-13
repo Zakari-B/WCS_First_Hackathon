@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import EarthGreen from "../assets/earth_green.png";
 import EarthDead from "../assets/earth_polluted.png";
+import Thermometer from "./Thermometer";
 import EarthNeutral from "../assets/earth_neutral.png";
 import gradientBackground from "../assets/gradientBackground.jpg";
 import EarthHealthContext from "../contexts/EarthHealthContext";
@@ -19,6 +20,7 @@ const Earth = () => {
         className="spaceImg"
       />
       <div className="earthContainer">
+        <Thermometer />
         <img
           src={EarthNeutral}
           alt="EarthNeutral"
