@@ -16,9 +16,6 @@ exports.findOne = (scoreId) => {
 
 exports.addOne = (score_) => {
   const { playerName, score, date } = score_;
-
-  console.log(score_);
-
   return db
     .promise()
     .query(

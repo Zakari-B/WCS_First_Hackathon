@@ -9,7 +9,7 @@ import EarthHealthContext from "../contexts/EarthHealthContext";
 import "../styles/Earth.scss";
 
 const Earth = ({ healthChange }) => {
-  const { hearthHealth } = useContext(EarthHealthContext); // range [-100 +100]
+  const { hearthHealth } = useContext(EarthHealthContext);
   const [healthNum, setHealthNum] = useState(healthChange);
   const [healthClass, setHealthClass] = useState(" ");
   const doAnim = useRef(true);
@@ -18,7 +18,6 @@ const Earth = ({ healthChange }) => {
     setHealthNum(healthChange);
 
     if (healthChange !== false && doAnim.current) {
-      console.log("OKOK OK");
       doAnim.current = false;
 
       if (healthChange > 0) setHealthClass("scoring-green scoring-anim");
@@ -30,12 +29,6 @@ const Earth = ({ healthChange }) => {
       }, 1800);
     }
   }, [healthChange]);
-
-  useEffect(() => {
-    console.log("healthChange", healthChange);
-    console.log("doAnim.current", doAnim.current);
-    console.log("healthClass", healthClass);
-  });
 
   return (
     <>
@@ -49,7 +42,6 @@ const Earth = ({ healthChange }) => {
         <Thermometer />
 
         <div className={`scoring ${healthClass}`}>
-          {/* {healthNum} */}
           {healthNum > 0 && healthNum !== false
             ? `+${healthNum}`
             : healthNum.toString()}
@@ -59,7 +51,6 @@ const Earth = ({ healthChange }) => {
           src={EarthNeutral}
           alt="EarthNeutral"
           className="earthImg earthNeutral"
-          // style={{ filter: `opacity(${(hearthHealth + 50) / 100})` }}
           draggable={false}
         />
         <img

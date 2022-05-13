@@ -22,10 +22,6 @@ exports.getOne = (req, res) => {
 };
 
 exports.createOne = (req, res) => {
-  const { playerName, score, date } = req.body;
-
-  console.log("req.body", req.body);
-
   scoresDataAccess
     .addOne(req.body)
     .then((info) => res.status(201).json(info))
@@ -34,7 +30,6 @@ exports.createOne = (req, res) => {
 
 exports.updateOne = (req, res) => {
   const scoreId = req.params.id;
-  const { playerName, score, date } = req.body;
   scoresDataAccess
     .replaceOne(scoreId, req.body)
     .then((info) => res.status(201).json(info))
@@ -43,7 +38,6 @@ exports.updateOne = (req, res) => {
 
 exports.deleteOne = (req, res) => {
   const scoreId = req.params.id;
-
   scoresDataAccess
     .removeOne(scoreId)
     .then((info) => {
