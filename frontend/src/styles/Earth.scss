@@ -1,7 +1,7 @@
 .earthContainer {
   position: relative;
-  width: 350px;
-  height: 350px;
+  width: 280px;
+  height: 280px;
 
   .earthImg {
     position: absolute;
@@ -9,11 +9,12 @@
 
   .earthGreen{
       top:40%;
-      left: 10%;
+      left: 40%;
       width: 90%;
   }
 
   .earthDead {
+    left: 34%;
     width: 200%;
   }
 }

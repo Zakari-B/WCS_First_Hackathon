@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import EarthGreen from "../assets/earth_green.png";
 import EarthDead from "../assets/earth_polluted.png";
-import spaceBG from "../assets/universe.png";
+import gradientBackground from "../assets/gradientBackground.jpg";
 import EarthHealthContext from "../contexts/EarthHealthContext";
 
 import "../styles/Earth.scss";
@@ -12,7 +12,7 @@ const Earth = () => {
   return (
     <>
       <img
-        src={spaceBG}
+        src={gradientBackground}
         alt="EarthBackgroundImg"
         draggable={false}
         className="spaceImg"

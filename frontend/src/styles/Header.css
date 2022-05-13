@@ -1,11 +1,15 @@
 .full-navigation {
+    display: flex;
+    align-items: center;
     width: 100%;
+    height: 60px;
     font-family: var(--font-family-text);
     font-size: 1.2rem;
     color: var(--text-color);
     background: #010b1a;
+    border-bottom: 1px solid #cccccc;
     z-index: 2;   
-    display: flex;
+
   }
   
   .navigation {

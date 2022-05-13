@@ -7,6 +7,7 @@ import "../styles/Game.scss";
 import data from "../assets/cards.json";
 import EnergyContext from "../contexts/EnergyContext";
 import EarthHealthContext from "../contexts/EarthHealthContext";
+import Footer from "../components/Footer";
 
 const Game = () => {
   const [shopOpen, setShopOpen] = useState(false);
@@ -183,6 +184,7 @@ OK                   Energie NOK ? Ne pas jouer
           />
         </div>
       </div>
+      <Footer />
     </>
   );
 };
