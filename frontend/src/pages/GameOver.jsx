@@ -30,11 +30,11 @@ const GameOver = () => {
               <p className="paragraph-end">“ Bravo, tu as réussi à détuire la Terre ! ”</p>
             </div>
             }
-            	<Link to={`/`}>
+            	<Link to="/Global">
                 <button
 										type="submit"
 										className="btn m-2 text-gray-800 py-2 px-8 text-4xl rounded-lg font-bold mx-8 drop-shadow-md pt-4 hover:bg-white/40 hover:text-white"
-									>Retourner au menu</button>
+									>Voir les scores</button>
                   </Link>
         </div>
       </div>
