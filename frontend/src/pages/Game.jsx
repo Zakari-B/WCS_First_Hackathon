@@ -6,8 +6,10 @@ import Board from "../components/Board.jsx";
 import "../styles/Game.scss";
 import EnergyContext from "../contexts/EnergyContext";
 import EarthHealthContext from "../contexts/EarthHealthContext";
+import PlayerContext from "../contexts/PlayerContext";
 import Footer from "../components/Footer";
 import CardsContext from "../contexts/CardsContext";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Game = () => {
@@ -24,6 +26,7 @@ const Game = () => {
   const [turn, setTurn] = useState(15);
   const { energy, setEnergy } = useContext(EnergyContext);
   const { hearthHealth, setHearthHealth } = useContext(EarthHealthContext);
+  const { playerName } = useContext(PlayerContext);
 
   let navigate = useNavigate();
 
@@ -269,6 +272,18 @@ OK                   Energie NOK ? Ne pas jouer
 
   useEffect(() => {
     if (turn - 1 === 0) {
+      console.log("axios post", {
+        playerName: playerName,
+        score: hearthHealth,
+        date: new Date(),
+      });
+      // axios post
+      axios.post("http://localhost:5000/scores", {
+        playerName: playerName,
+        score: hearthHealth,
+        date: new Date(),
+      });
+
       navigate("/GameOver", { replace: true });
     } else piocheCartes();
   }, [turn]);
