@@ -64,3 +64,14 @@
     left: 100%;
   }
   
+  .translationUp {
+    transform: translate(0%, -50%);
+  }
+
+  .translationLeft {
+    transform: translate(-100%, -50%);
+  }
+
+  .cardListModal .card {
+    margin: 0 10px;
+  }
