@@ -1,29 +1,15 @@
 const express = require("express");
-const path = require("path");
-const cors = require("cors");
-
-// let's create express app
-
+require("dotenv").config();
+const scoresRoutes = require("./routes/scoresRoutes");
+const actionsRoutes = require("./routes/actionsRoutes");
 const app = express();
-
-// use some application-level middlewares
-
 app.use(express.json());
-app.use(cors());
-app.use(express.static(path.join(__dirname, "../../frontend")));
 
-// load router
+app.use("/scores", scoresRoutes);
+app.use("/actions", actionsRoutes);
 
-const router = require("./router");
-
-app.use("/api", router);
-
-// require("./N2yoListener");
-
-// Allow front rooter
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../frontend", "index.html"));
-});
+    res.status(404).send({message: "Not found !"})
+})
 
-// ready to export
 module.exports = app;

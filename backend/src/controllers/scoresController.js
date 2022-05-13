@@ -1,16 +1,16 @@
 const scoresDataAccess = require("../models/scoresDataAccess");
 
 exports.getAll = (req, res) => {
-    scoresDataAccess
+  scoresDataAccess
     .findAll()
     .then((data) => res.send(data))
     .catch((err) => res.status(500).send(err));
 };
 
 exports.getOne = (req, res) => {
-  const studentId = req.params.id;
+  const scoreId = req.params.id;
   scoresDataAccess
-    .findOne(studentId)
+    .findOne(scoreId)
     .then((student) => {
       if (student.length === 0) {
         res.sendStatus(404);
@@ -22,27 +22,30 @@ exports.getOne = (req, res) => {
 };
 
 exports.createOne = (req, res) => {
-  const { lastname, firstname, age, campus } = req.body;
+  const { playerName, score, date } = req.body;
+
+  console.log("req.body", req.body);
+
   scoresDataAccess
-      .addOne(req.body)
-      .then((info) => res.status(201).json(info))
-      .catch((err) => res.status(500).send({ err }));
+    .addOne(req.body)
+    .then((info) => res.status(201).json(info))
+    .catch((err) => res.status(500).send({ err }));
 };
 
 exports.updateOne = (req, res) => {
-  const studentId = req.params.id;
-  const { lastname, firstname, age, campus } = req.body;
+  const scoreId = req.params.id;
+  const { playerName, score, date } = req.body;
   scoresDataAccess
-      .replaceOne(studentId, req.body)
-      .then((info) => res.status(201).json(info))
-      .catch((err) => res.status(500).send({ err }));
+    .replaceOne(scoreId, req.body)
+    .then((info) => res.status(201).json(info))
+    .catch((err) => res.status(500).send({ err }));
 };
 
 exports.deleteOne = (req, res) => {
-  const studentId = req.params.id;
+  const scoreId = req.params.id;
 
   scoresDataAccess
-    .removeOne(studentId)
+    .removeOne(scoreId)
     .then((info) => {
       if (info) {
         res.sendStatus(204);
