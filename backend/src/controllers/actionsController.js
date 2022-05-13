@@ -22,9 +22,6 @@ exports.getOne = (req, res) => {
 };
 
 exports.createOne = (req, res) => {
-
-
-  const { idPartie, playerName, hit, date } = req.body;
   actionsDataAccess
       .addOne(req.body)
       .then((info) => res.status(201).json(info))
@@ -33,7 +30,6 @@ exports.createOne = (req, res) => {
 
 exports.updateOne = (req, res) => {
   const actionId = req.params.id;
-  const { idPartie, playerName, hit, date } = req.body;
   actionsDataAccess
       .replaceOne(actionId, req.body)
       .then((info) => res.status(201).json(info))
@@ -42,7 +38,6 @@ exports.updateOne = (req, res) => {
 
 exports.deleteOne = (req, res) => {
   const actionId = req.params.id;
-
   actionsDataAccess
     .removeOne(actionId)
     .then((info) => {
