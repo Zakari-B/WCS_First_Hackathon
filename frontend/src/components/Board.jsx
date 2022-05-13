@@ -10,12 +10,9 @@ const Board = ({
   cardsDeck,
   cardsDiscard,
   handleCardClick,
+  handlePlay,
+  handleFinishTurn,
 }) => {
-  useEffect(() => {
-    console.log("cardsHand", cardsHand);
-    console.log("cardsDrawPile", cardsDrawPile);
-  });
-
   return (
     <>
       <div className="Deck">
@@ -26,6 +23,8 @@ const Board = ({
           cardsHand={cardsHand}
           handleCardClick={handleCardClick}
           cardsDiscard={cardsDiscard}
+          handlePlay={handlePlay}
+          handleFinishTurn={handleFinishTurn}
         />
       </div>
       <div className="Discard">

@@ -95,7 +95,7 @@
         "text": "3 dégâts",
         "value": -3,
         "effect": null,
-        "image": "/factory.png",
+        "image": "/politicien.png",
         "isStarterDeck": true
     },
     {
@@ -106,7 +106,7 @@
         "text": "3 soins",
         "value": 3,
         "effect": null,
-        "image": "/tree.png",
+        "image": "/turbine.png",
         "isStarterDeck": true
     },
     {
@@ -117,7 +117,7 @@
         "text": "10 dégâts",
         "value": -10,
         "effect": null,
-        "image": "/factory.png",
+        "image": "/trump.png",
         "isStarterDeck": false
     },
     {
@@ -128,7 +128,7 @@
         "text": "12 dégâts",
         "value": -12,
         "effect": null,
-        "image": "/factory.png",
+        "image": "/bezos.png",
         "isStarterDeck": false
     },
     {
@@ -150,7 +150,7 @@
         "text": "10 soins",
         "value": 10,
         "effect": null,
-        "image": "/factory.png",
+        "image": "/bove.png",
         "isStarterDeck": false
     },
     {
@@ -161,7 +161,7 @@
         "text": "1 soin. Pioche deux cartes",
         "value": 1,
         "effect": "megaDraw",
-        "image": "/tree.png",
+        "image": "/hive.png",
         "isStarterDeck": false
     },
     {
@@ -172,7 +172,7 @@
         "text": "6 soins",
         "value": 6,
         "effect": null,
-        "image": "/tree.png",
+        "image": "/tri.png",
         "isStarterDeck": false
     },
     {
@@ -183,7 +183,7 @@
         "text": "1 soin. Détruis une carte de ton deck",
         "value": 1,
         "effect": "remove",
-        "image": "/tree.png",
+        "image": "/carton.png",
         "isStarterDeck": false
     },
     {
@@ -194,7 +194,7 @@
         "text": "3 soins",
         "value": 3,
         "effect": null,
-        "image": "/tree.png",
+        "image": "/pigeon.png",
         "isStarterDeck": false
     },
     {
@@ -205,7 +205,7 @@
         "text": "4 soins. Ajoute une usine dans ton deck",
         "value": 4,
         "effect": "addUsine",
-        "image": "/tree.png",
+        "image": "/car.png",
         "isStarterDeck": false
     },
     {
@@ -227,7 +227,7 @@
         "text": "1 soin. Gagne 1 Energie",
         "value": 1,
         "effect": "gain",
-        "image": "/tree.png",
+        "image": "/permaculture.png",
         "isStarterDeck": false
     },
     {
@@ -238,7 +238,7 @@
         "text": "3 soins. Pioche une carte",
         "value": 3,
         "effect": "draw",
-        "image": "/tree.png",
+        "image": "/association.png",
         "isStarterDeck": false
     },
     {
@@ -249,7 +249,7 @@
         "text": "4 soins. Gagne 2 Energies",
         "value": 4,
         "effect": "megaGain",
-        "image": "/tree.png",
+        "image": "/protest.png",
         "isStarterDeck": false
     },
     {
@@ -260,7 +260,7 @@
         "text": "1 soin",
         "value": 1,
         "effect": null,
-        "image": "/tree.png",
+        "image": "/bath.png",
         "isStarterDeck": false
     },
     {
@@ -271,7 +271,7 @@
         "text": "1 dégât. Détruise une carte de ton deck",
         "value": -1,
         "effect": "remove",
-        "image": "/factory.png",
+        "image": "/plastique.png",
         "isStarterDeck": false
     },
     {
@@ -282,7 +282,7 @@
         "text": "1 dégât. Pioche deux cartes",
         "value": -1,
         "effect": "megaDraw",
-        "image": "/factory.png",
+        "image": "/smartphone.png",
         "isStarterDeck": false
     },
     {
@@ -293,7 +293,7 @@
         "text": "9 dégâts",
         "value": -9,
         "effect": null,
-        "image": "/factory.png",
+        "image": "/maree.png",
         "isStarterDeck": false
     },
     {
@@ -304,7 +304,7 @@
         "text": "6 dégâts",
         "value": -6,
         "effect": null,
-        "image": "/factory.png",
+        "image": "/deforestation.png",
         "isStarterDeck": false
     },
     {
@@ -315,7 +315,7 @@
         "text": "1 dégât. Gagne 1 Energie",
         "value": -1,
         "effect": "gain",
-        "image": "/factory.png",
+        "image": "/pesticides.png",
         "isStarterDeck": false
     },
     {
@@ -326,7 +326,7 @@
         "text": "4 dégâts. Ajoute un arbre dans ton deck",
         "value": -4,
         "effect": "addArbre",
-        "image": "/factory.png",
+        "image": "/diesel.png",
         "isStarterDeck": false
     },
     {
@@ -337,7 +337,7 @@
         "text": "3 dégâts",
         "value": -3,
         "effect": null,
-        "image": "/factory.png",
+        "image": "/yacht.png",
         "isStarterDeck": false
     },
     {
@@ -348,7 +348,7 @@
         "text": "4 dégâts. Gagne 2 Energies",
         "value": -4,
         "effect": "megaGain",
-        "image": "/factory.png",
+        "image": "/bfm.png",
         "isStarterDeck": false
     },
     {
@@ -359,7 +359,7 @@
         "text": "3 dégâts. Pioche une carte",
         "value": -3,
         "effect": "draw",
-        "image": "/factory.png",
+        "image": "/radioactif.png",
         "isStarterDeck": false
     },
     {
@@ -370,7 +370,7 @@
         "text": "1 dégât",
         "value": -1,
         "effect": null,
-        "image": "/factory.png",
+        "image": "/cigarette.png",
         "isStarterDeck": false
     }
 ]

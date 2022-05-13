@@ -1,9 +1,17 @@
+// .GameContainer {
+//     position: relative;
+//     display:flex;
+//     flex-direction:column;
+//     border : 2px solid black;
+//     min-height:100vh;
+//     min-width:100vw;
+// }
+
 .GameContainer {
     position: relative;
     display:flex;
     flex-direction:column;
-    border : 2px solid black;
-    min-height:100vh;
+    height:calc(100vh - 9px);
     min-width:100vw;
 }
 
@@ -13,32 +21,39 @@
     min-height:50vh;
     height:50%;
     width:100%;
-    border : 2px solid red;
 }
 
 .EarthContainer {
     min-height:100%;
-    width:50%;
-    border : 2px solid blue;
+    max-height:100%;
+    min-width:25%;
+    max-width:25%;
 }
 
+.EarthContainer > .spaceImg {
+    position:absolute;
+    top:0;
+    left:0;
+    height:50%;
+    width:100%;
+  }
 
 .ShopContainer {
     display:flex;
     align-items:center;
     min-height:100%;
-    width:50%;
-    border : 2px solid orange;
+    width:75%;
 }
-
 
 .GameTray {
     display:flex;
     flex-direction:row;
+    background-image: url("../assets/bg-table.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     min-height:50vh;
     height:50%;
     width:100%;
-    border : 2px solid green;
 }
 
 .HandInner {
@@ -56,14 +71,12 @@
     flex-wrap:wrap;
     justify-content:space-around;
     align-items:center;
-    border:2px solid green;
     height:95%;
     width:95%;
     margin:auto;
 }
 
 .ShopCard {
-    border: 2px solid black;
     height: 45%;
     width: 30%;
 }

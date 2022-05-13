@@ -27,6 +27,7 @@ const Rules = () => {
 		},
 	];
 	const [isOpen, setOpen] = useState(false);
+  
 	return (
 		<div>
 			<button type="button" onClick={() => setOpen(!isOpen)}>

@@ -17,23 +17,62 @@
 }
 
 .CardContainer {
+    position:relative;
     display:flex;
     flex-direction:row;
-    align-items: center;
+    align-items: flex-end;
     justify-content:space-around;
     height:90%;
     width:80%;
     border: 2px solid black;
     margin:auto;
+    padding-bottom: 1%
+}
+
+.PlayButton {
+    position:absolute;
+    z-index: 1;
+    top:45%;
+    left:35%;
+    height:10%;
+    width:10%;
+    border: 2px solid gold;
+    border-radius:10px;
+    background-color:rgb(101, 170, 101);
+}
+
+.finishButton{
+    position:absolute;
+    z-index: 1;
+    top:45%;
+    left:55%;
+    height:10%;
+    width:10%;
+    border: 2px solid gold;
+    border-radius:10px;
+    background-color:rgb(101, 170, 101);
 }
 
 .ShopButton {
     position:absolute;
     z-index: 1;
+    top:45%;
+    left:45%;
+    height:10%;
+    width:10%;
+    border: 2px solid gold;
+    border-radius:10px;
+    background-color:rgb(101, 170, 101);
+}
+
+.testButton {
+    position:absolute;
+    z-index: 1;
     top:0;
-    left:50;
+    left:0;
     height:10%;
     width:20%;
-    border: 2px solid black;
-    background-color:lightgray;
+    border: 2px solid gold;
+    border-radius:10px;
+    background-color:rgb(101, 170, 101);
 }

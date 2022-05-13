@@ -1,6 +1,6 @@
 .card-unselected{
     transform: translateY(0);
-    transition: transform .5s;
+    transition: transform .3s ease-in-out;
 }
 
 .card-selected{
@@ -8,6 +8,8 @@
 }
 
 .card {
+    user-select: none;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -15,10 +17,11 @@
     width: 200px;
     height: 300px;
     text-align: center;
-    border: 1px solid #575757;
+    border: 1px solid #333333;
     border-radius: 15px;
     box-shadow: 4px 4px 15px 1px rgba(97, 97, 97, 0.44);
-
+    z-index:1;
+    
     .card-top,
     .card-bottom {
         position: relative;
@@ -26,7 +29,8 @@
     }
 
     .card-top {
-        height: 70%;
+        height: 65%;
+
         .card-cost {
             position: absolute;
             font-size: 1.6rem;
@@ -39,14 +43,16 @@
         }
 
         .card-title {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 500;
-            margin-top: 20px;
+            max-width: 50%;
+            margin: 0 auto;
+            margin-top: 30px;
             margin-bottom: 15px;
         }
 
         .card-img {
-            margin: auto;
+            margin: 15px auto;
             img {
                 width: 68%;
                 height: 68%;
@@ -79,13 +85,13 @@
     }
 
     .card-bottom {       
-        height: 30%;
+        height: 35%;
 
         .card-effect {
-            margin: 0 auto;
-            font-size: 1.2rem;
+            margin: 30px auto;
+            font-size: 1rem;
             font-weight: 500;
-            max-width: 60%;
+            max-width: 50%;
         }
 
         &::before {
@@ -112,3 +118,42 @@
         }
     }
 }
+
+.cardHover{
+    transform:scale(1.1);
+    z-index:2;
+}
+
+.card-verso {
+    position: relative;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background: rgb(57,102,49);
+    background: linear-gradient(180deg, rgba(57,102,49,1) 0%, rgba(4,37,77,1) 100%); 
+    width: 200px;
+    height: 300px;
+    border: 1px solid #222222;
+    border-radius: 15px;
+    box-shadow: 4px 4px 15px 1px rgba(97, 97, 97, 0.44);
+    cursor:pointer;
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 99%;
+        height:60%;
+        background-image: url(../assets/card-logo.png);
+        background-position: center center;
+        background-size: cover;
+    }
+
+    & > span {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        font-size: 2vw;
+        font-weight: bold;
+    }
+}
+

@@ -3,6 +3,8 @@ import batteryImg from "../assets/battery.png";
 import "../styles/Energy.scss";
 import EnergyContext from "../contexts/EnergyContext";
 
+const energyColor = ["#75c332", "#bfc332", "#ff4600"];
+
 const Energy = () => {
   const { energy } = useContext(EnergyContext);
 
@@ -14,20 +16,20 @@ const Energy = () => {
     );
   }, [energy]);
 
-  useEffect(() => {
-    console.log("**** batteryState", batteryState);
-  });
-
   return (
     <div className="batteryContainer">
-      <img src={batteryImg} alt="battery" />
+      <img src={batteryImg} draggable={false} alt="battery" />
       {batteryState.map(
         (bar, barIndex) =>
           bar && (
             <div
               key={barIndex}
               className="batteryBar"
-              style={{ bottom: `${12 + 23 * barIndex}%` }}
+              style={{
+                bottom: `${12 + 23 * barIndex}%`,
+                backgroundColor:
+                  energyColor[batteryState.filter((bat) => !bat).length],
+              }}
             />
           )
       )}
