@@ -7,7 +7,7 @@ const Hand = ({ cardsHand, handleCardClick, handlePlay, handleFinishTurn }) => {
   return (
     <div className="HandInner">
       {cardsHand.filter((card) => card.selected).length ? (
-        <button type="button" className="PlayButton" onClick={handlePlay}>
+        <button type="button" className="playButton" onClick={handlePlay}>
           PLAY
         </button>
       ) : null}

@@ -17,22 +17,24 @@ const Energy = () => {
   }, [energy]);
 
   return (
-    <div className="batteryContainer">
-      <img src={batteryImg} draggable={false} alt="battery" />
-      {batteryState.map(
-        (bar, barIndex) =>
-          bar && (
-            <div
-              key={barIndex}
-              className="batteryBar"
-              style={{
-                bottom: `${12 + 23 * barIndex}%`,
-                backgroundColor:
-                  energyColor[batteryState.filter((bat) => !bat).length],
-              }}
-            />
-          )
-      )}
+    <div className="battery-container">
+      <div className="battery-box">
+        <img src={batteryImg} draggable={false} alt="battery" />
+        {batteryState.map(
+          (bar, barIndex) =>
+            bar && (
+              <div
+                key={barIndex}
+                className="batteryBar"
+                style={{
+                  bottom: `${12 + 23 * barIndex}%`,
+                  backgroundColor:
+                    energyColor[batteryState.filter((bat) => !bat).length],
+                }}
+              />
+            )
+        )}
+      </div>
     </div>
   );
 };
