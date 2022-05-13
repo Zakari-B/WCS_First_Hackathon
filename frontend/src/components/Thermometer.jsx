@@ -5,37 +5,57 @@ import "../styles/Thermometer.scss";
 
 const Thermometer = () => {
   const { hearthHealth } = useContext(EarthHealthContext);
-  const [thermoState, setthermoState] = useState([true, true, true]);
+  const [thermoBar, setThermoBar] = useState(0);
+  const [thermoColor, setThermoColor] = useState("rgb(125, 125, 125)");
+
+  function thermoBarHandler() {
+    if (hearthHealth < 0) {
+      return setThermoBar(Math.min((Math.abs(hearthHealth) / 100) * 36, 36));
+    } else {
+      return setThermoBar(0);
+    }
+  }
+
+  function thermoColorHandler() {
+    if (hearthHealth < 0) {
+      setThermoColor(
+        `rgb(${Math.min((Math.abs(hearthHealth) / 100) * 255 + 125, 255)}, ${
+          100 - 0.33 * Math.abs(hearthHealth)
+        }, ${100 - 0.33 * Math.abs(hearthHealth)})`
+      );
+    } else {
+      setThermoColor(
+        `rgb(${100 - 0.33 * Math.abs(hearthHealth)}, ${Math.min(
+          125 + (Math.abs(hearthHealth) / 100) * 255,
+          255
+        )}, ${Math.min(125 + (Math.abs(hearthHealth) / 100) * 255, 255)})`
+      );
+    }
+  }
 
   useEffect(() => {
-    if (hearthHealth >= 0) {
-      setthermoState([false, false, false]);
-    } else if (hearthHealth > -33) {
-      setthermoState([true, false, false]);
-    } else if (hearthHealth > -66) {
-      setthermoState([true, true, false]);
-    } else {
-      setthermoState([true, true, true]);
-    }
+    thermoBarHandler();
+    thermoColorHandler();
   }, [hearthHealth]);
 
   return (
     <div className="thermo-container">
       <div className="thermo-box">
         <img src={thermoImg} draggable={false} alt="battery" />
-        <div className="thermoBall" />
-        {thermoState.map(
-          (bar, barIndex) =>
-            bar && (
-              <div
-                key={barIndex}
-                className="thermoBar"
-                style={{
-                  bottom: `${67 + 10 * barIndex}%`,
-                }}
-              />
-            )
-        )}
+        <div
+          className="thermoBall"
+          style={{
+            backgroundColor: `${thermoColor}`,
+          }}
+        />
+        <div
+          className="thermoBar"
+          style={{
+            height: `${thermoBar}%`,
+            borderColor: `${thermoColor}`,
+            backgroundColor: `${thermoColor}`,
+          }}
+        />
       </div>
     </div>
   );
