@@ -4,27 +4,34 @@ import Earth from "../components/Earth.jsx";
 import Shop from "../components/Shop.jsx";
 import Board from "../components/Board.jsx";
 import "../styles/Game.scss";
-import data from "../assets/cards.json";
 import EnergyContext from "../contexts/EnergyContext";
 import EarthHealthContext from "../contexts/EarthHealthContext";
 import Footer from "../components/Footer";
+import CardsContext from "../contexts/CardsContext";
 
 const Game = () => {
+  const { cardsList } = useContext(CardsContext);
   const [shopOpen, setShopOpen] = useState(false);
   const [cardsDeck, setCardsDeck] = useState(
-    data.filter((e) => e.isStarterDeck)
+    cardsList.filter((e) => e.isStarterDeck)
   );
   const [cardsHand, setCardsHand] = useState([]);
   const [cardsDiscard, setCardsDiscard] = useState([]);
   const [cardsDrawPile, setCardsDrawPile] = useState(
-    data.filter((e) => e.isStarterDeck)
+    cardsList.filter((e) => e.isStarterDeck)
   );
   const [turn, setTurn] = useState(15);
   const { energy, setEnergy } = useContext(EnergyContext);
-  const { earthHealth, setHearthHealth } = useContext(EarthHealthContext);
+  const { hearthHealth, setHearthHealth } = useContext(EarthHealthContext);
 
-  const handleShop = () => {
-    console.log("Handling shop");
+  const toggleShop = () => {
+    setCardsHand(
+      cardsHand.map((card) => {
+        card.selected = false;
+        return card;
+      })
+    );
+
     setShopOpen(!shopOpen);
   };
 
@@ -49,67 +56,103 @@ OK                   Energie NOK ? Ne pas jouer
 
 */
 
-  const piocheCartes = () => {
-    const starterIds = [];
+  const piocheCartes = (drawEffect = false, toRemoveId = false) => {
+    let starterIds = cardsHand.map((card) => card.id);
     let newDrawPile = cardsDrawPile;
     let newDiscard = cardsDiscard;
 
-    if (cardsDrawPile.length < 5) {
-      cardsDrawPile.forEach((card) => starterIds.push(card.id));
-      newDrawPile = cardsDiscard;
+    if (toRemoveId !== false) {
+      starterIds = starterIds.filter((id) => id !== toRemoveId);
+      newDiscard = [
+        ...newDiscard,
+        cardsList.filter((card) => card.id === toRemoveId)[0],
+      ];
     }
 
-    const nbCardsToGet = 5 - starterIds.length;
+    // vérifier si pioche suffisante pour avoir 5 carte
+    // si nok rajouter à pioche la défausse
+    if (cardsDrawPile.length + cardsHand.length < 5) {
+      newDrawPile = [...newDrawPile, ...newDiscard];
+      newDiscard = [];
+    }
+
+    let nbCardsToGet = Math.min(5, newDrawPile.length + starterIds.length);
+
+    if (drawEffect) {
+      nbCardsToGet = Math.min(
+        starterIds.length + drawEffect,
+        newDrawPile.length + starterIds.length
+      );
+      if (
+        cardsDrawPile.length + cardsHand.length <
+        starterIds.length + drawEffect
+      ) {
+        newDrawPile = [...newDrawPile, ...newDiscard];
+        newDiscard = [];
+      }
+    }
 
     while (starterIds.length < nbCardsToGet) {
-      const randomIndex = Math.floor(Math.random() * cardsDrawPile.length);
-      if (!starterIds.includes(cardsDrawPile[randomIndex].id))
-        starterIds.push(cardsDrawPile[randomIndex].id);
+      const randomIndex = Math.floor(Math.random() * newDrawPile.length);
+      if (!starterIds.includes(newDrawPile[randomIndex].id))
+        starterIds.push(newDrawPile[randomIndex].id);
     }
 
-    setCardsDrawPile(
-      newDrawPile.filter((card) => !starterIds.includes(card.id))
+    const newDrawPileToSet = newDrawPile.filter(
+      (card) => !starterIds.includes(card.id)
     );
-    setCardsHand(
-      data
-        .filter((card) => starterIds.includes(card.id))
-        .map((card) => {
-          card.selected = false;
-          return card;
-        })
-    );
+
+    const cardsListToSet = cardsList
+      .filter((card) => starterIds.includes(card.id))
+      .map((card) => {
+        card.selected = false;
+        return card;
+      });
+
+    if (drawEffect) {
+      return {
+        drawPile: newDrawPileToSet,
+        discard: [...newDiscard],
+        hand: cardsListToSet,
+      };
+    } else {
+      setCardsDrawPile(newDrawPileToSet);
+      setCardsDiscard([...newDiscard]);
+      setCardsHand(cardsListToSet);
+    }
   };
 
   const handleCardClick = (e, id) => {
-    console.log(e);
-    console.log(id);
+    if (!shopOpen) {
+      const cardInHand = !cardsHand.filter((card) => card.id === id)[0]
+        .selected;
 
-    // vérifier si la carte est dans la hand ou dans le cardsDiscard
-    const cardInHand = !cardsHand.filter((card) => card.id === id)[0].selected;
+      if (cardInHand) {
+        if (cardsList.filter((card) => card.id === id)[0].cost <= energy) {
+          setCardsHand(
+            cardsHand.map((card) => {
+              if (card.id === id) card.selected = true;
+              return card;
+            })
+          );
 
-    console.log("cardInHand in handleCardClick", cardInHand);
-
-    if (cardInHand) {
-      if (data.filter((card) => card.id === id)[0].cost <= energy) {
+          setEnergy(
+            energy - cardsList.filter((card) => card.id === id)[0].cost
+          );
+        }
+      } else {
         setCardsHand(
           cardsHand.map((card) => {
-            if (card.id === id) card.selected = true;
+            if (card.id === id) card.selected = false;
             return card;
           })
         );
 
-        setEnergy(energy - data.filter((card) => card.id === id)[0].cost);
+        setEnergy(energy + cardsList.filter((card) => card.id === id)[0].cost);
       }
-    } else {
-      setCardsHand(
-        cardsHand.map((card) => {
-          if (card.id === id) card.selected = false;
-          return card;
-        })
-      );
-
-      setEnergy(energy + data.filter((card) => card.id === id)[0].cost);
     }
+
+    // vérifier si la carte est dans la hand ou dans le cardsDiscard
   };
 
   // -          onClick sur fin de tour =>
@@ -117,40 +160,116 @@ OK                   Energie NOK ? Ne pas jouer
   //       IF Turn === 0 => Modal Partie finie, bouton redirect page result
 
   const handlePlay = (e) => {
-    console.log("handlePlay", e);
-
     setHearthHealth(
-      earthHealth +
+      hearthHealth +
         cardsHand
           .filter((card) => card.selected)
           .reduce((acc, val) => acc + val.value, 0)
     );
-    setCardsHand(cardsHand.filter((card) => !card.selected));
 
-    setCardsDiscard(cardsHand.filter((card) => card.selected));
+    const effectNewCards = [];
+    let effectPioche = {};
+
+    cardsHand
+      .filter((card) => card.selected)
+      .filter((card) => card.effect !== null)
+      .forEach((card) => {
+        const effect = card.effect;
+
+        if (effect === "draw" || effect === "megaDraw") {
+          // piocher 1-2 cartes
+          effectPioche = piocheCartes(effect === "draw" ? 1 : 2, card.id);
+        }
+
+        if (effect === "gain") setEnergy(Math.min(energy + 1, 3));
+
+        if (effect === "megaGain") setEnergy(Math.min(energy + 2, 3));
+
+        if (effect === "addArbre")
+          effectNewCards.push({
+            id: cardsList.reduce((acc, val) => Math.max(acc, val.id), 0) + 1,
+            name: "Arbre",
+            cost: 1,
+            positif: true,
+            text: "1 soin",
+            value: 1,
+            effect: null,
+            image: "/tree.png",
+            isStarterDeck: false,
+          });
+        if (effect === "addUsine")
+          effectNewCards.push({
+            id: cardsList.reduce((acc, val) => Math.max(acc, val.id), 0) + 1,
+            name: "Usine",
+            cost: 1,
+            positif: false,
+            text: "1 dégât",
+            value: -1,
+            effect: null,
+            image: "/factory.png",
+            isStarterDeck: false,
+          });
+
+        console.log("effectNewCards", effectNewCards);
+
+        if (effect === "get") {
+        }
+        // ajouter un achat supplémentaire dans le shop
+      });
+
+    // {
+    //   drawPile: newDrawPileToSet,
+    //   discard: [...newDiscard],
+    //   hand: cardsListToSet,
+    // }
+
+    if (Object.keys(effectPioche).length) {
+      setCardsHand(effectPioche.hand);
+      setCardsDiscard([...effectPioche.discard, ...effectNewCards]);
+      setCardsDrawPile(effectPioche.drawPile);
+    } else {
+      setCardsHand(cardsHand.filter((card) => !card.selected));
+
+      setCardsDiscard([
+        ...cardsDiscard,
+        ...cardsHand
+          .filter((card) => card.selected)
+          .map((card) => {
+            card.selected = false;
+            return card;
+          }),
+        ...effectNewCards,
+      ]);
+    }
   };
 
   const handleFinishTurn = () => {
+    setCardsDiscard([...cardsDiscard, ...cardsHand]);
+    setCardsHand([]);
     setShopOpen(false);
     setTurn(turn - 1);
-    if (turn - 1 === 0) {
-      // finish game
-    } else piocheCartes();
+    setEnergy(3);
   };
 
   const buyCard = (selected) => {
-    console.log(selected);
-    console.log(data);
-    setCardsDrawPile([
-      ...cardsDrawPile,
-      data.filter((card) => card.id === selected)[0],
-    ]);
-    handleFinishTurn();
+    const inDeck = [...cardsHand, ...cardsDiscard, ...cardsDrawPile];
+
+    if (!inDeck.map((card) => card.id).includes(selected)) {
+      setCardsDrawPile([
+        ...cardsDrawPile,
+        cardsList.filter((card) => card.id === selected)[0],
+      ]);
+
+      handleFinishTurn();
+    }
   };
 
   useEffect(() => {
-    piocheCartes();
-  }, []);
+    if (turn - 1 === 0) {
+      // finish game
+      // faire rediriger vers la route gameover
+    } else piocheCartes();
+  }, [turn]);
 
   return (
     <>
@@ -164,11 +283,12 @@ OK                   Energie NOK ? Ne pas jouer
           <div className="ShopContainer">
             <Shop
               shopOpen={shopOpen}
-              handleShop={handleShop}
+              toggleShop={toggleShop}
               cardsHand={cardsHand}
               cardsDiscard={cardsDiscard}
               cardsDrawPile={cardsDrawPile}
               buyCard={buyCard}
+              setShopOpen={setShopOpen}
             />
           </div>
         </div>
@@ -181,6 +301,7 @@ OK                   Energie NOK ? Ne pas jouer
             cardsDeck={cardsDeck}
             cardsDiscard={cardsDiscard}
             handlePlay={handlePlay}
+            handleFinishTurn={handleFinishTurn}
           />
         </div>
       </div>
