@@ -143,7 +143,7 @@ const Global = () => {
             <table>
               <thead>
                 <tr>
-                  <th colspan="2">Top des sauveurs</th>
+                  <th colSpan="2">Top des sauveurs</th>
                 </tr>
               </thead>
               <tbody>
@@ -157,7 +157,7 @@ const Global = () => {
                   })
                   .slice(0, 10)
                   .map((user) => (
-                    <tr>
+                    <tr key={"list" + user.pseudo}>
                       <th>{user.pseudo}</th>
                       <th>{user.score}</th>
                     </tr>
@@ -171,7 +171,7 @@ const Global = () => {
             <table>
               <thead>
                 <tr>
-                  <th colspan="2">Top des destructeurs</th>
+                  <th colSpan="2">Top des destructeurs</th>
                 </tr>
               </thead>
               <tbody>
@@ -185,7 +185,7 @@ const Global = () => {
                   })
                   .slice(0, 10)
                   .map((user) => (
-                    <tr>
+                    <tr key={"list" + user.pseudo}>
                       <th>{user.pseudo}</th>
                       <th>{user.score}</th>
                     </tr>
