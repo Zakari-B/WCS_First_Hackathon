@@ -9,14 +9,14 @@ const GameOver = () => {
   const { setTurn } = useContext(TurnContext);
 
   useEffect(() => {
-    setTurn(15);
+    setTurn(12);
   }, []);
 
   return (
     <>
       <div className="endContainer">
         <div className="glassMorphEnd">
-          <h1 className="title-end">Résultat</h1>
+          <h1 className="title-end text-white">Résultat</h1>
           {playerScore >= 0 ? (
             <div className="text-container">
               <div>
@@ -28,10 +28,18 @@ const GameOver = () => {
                   className="img-end"
                 />
               </div>
-              <p className="paragraph-end">
+              <p
+                className={`${
+                  playerScore >= 0 ? "text-green-500" : "text-red-500"
+                } text-5xl m-4 font-sans`}
+              >
                 Impact de {playerName} : {playerScore} points.
               </p>
-              <p className="paragraph-end">
+              <p
+                className={`${
+                  playerScore >= 0 ? "text-green-500" : "text-red-500"
+                } text-5xl m-4 font-sans`}
+              >
                 “ Bravo, tu as réussi à sauver la Terre ! ”
               </p>
             </div>

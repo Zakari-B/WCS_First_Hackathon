@@ -64,6 +64,23 @@
     background-color: rgba(119, 119, 119, 0.2);
     border: 2px solid rgb(109, 109, 109);
     border-radius: 15px;
+    filter: opacity(0);
+    transition: 0.3s filter ease-in-out;
+}
+
+.ShopDiv::before{
+    content:"select a new card...";
+    position:absolute;
+    top:0;
+    margin-top: 2.0vh;
+    font-size: 3.2vh;
+    font-weight: bold;
+    font-family: var(--font-family-text);
+    color:#444444
+}
+
+.ShopDiv-show {
+    filter: opacity(1);
 }
 
 .ShopCard {
