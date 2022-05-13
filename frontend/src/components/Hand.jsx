@@ -19,7 +19,7 @@ const Hand = ({
           className="btn-type playButton"
           onClick={handlePlay}
         >
-          PLAY
+          JOUER
         </button>
       ) : null}
 
