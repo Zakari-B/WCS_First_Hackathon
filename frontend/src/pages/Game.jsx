@@ -290,7 +290,6 @@ OK                   Energie NOK ? Ne pas jouer
               cardsDiscard={cardsDiscard}
               cardsDrawPile={cardsDrawPile}
               buyCard={buyCard}
-              setShopOpen={setShopOpen}
             />
           </div>
         </div>
@@ -305,6 +304,7 @@ OK                   Energie NOK ? Ne pas jouer
             handlePlay={handlePlay}
             handleFinishTurn={handleFinishTurn}
             shopOpen={shopOpen}
+            setShopOpen={setShopOpen}
           />
         </div>
       </div>

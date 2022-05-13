@@ -9,6 +9,7 @@ const Hand = ({
   handlePlay,
   handleFinishTurn,
   shopOpen,
+  setShopOpen,
 }) => {
   return (
     <div className="HandInner">
@@ -17,6 +18,16 @@ const Hand = ({
           PLAY
         </button>
       ) : null}
+
+      {!shopOpen && (
+        <button
+          className="ShopButton"
+          type="button"
+          onClick={() => setShopOpen(true)}
+        >
+          OPEN SHOP
+        </button>
+      )}
 
       {shopOpen && (
         <button
