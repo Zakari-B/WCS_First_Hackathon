@@ -55,9 +55,6 @@ const Shop = ({
       >
         OPEN SHOP
       </button>
-      <button className="testButton" type="button" onClick={() => pickCards()}>
-        TESTBUTTON
-      </button>
 
       <div className="ShopDiv">
         {shopOpen

@@ -17,10 +17,10 @@ const Header = () => {
             <li className="navigation-name">
               <Link to="/Global">Global</Link>
             </li>
-            <li className="navigation-name">
+            <li>
               <Hud />
             </li>
-          <div className="instructions-part">
+          <div className="navigation-name instructions-part">
           <li >
           <Rules />
             </li>
