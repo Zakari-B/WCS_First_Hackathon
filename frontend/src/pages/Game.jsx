@@ -4,6 +4,7 @@ import Earth from "../components/Earth.jsx";
 import Shop from "../components/Shop.jsx";
 import Board from "../components/Board.jsx";
 import "../styles/Game.scss";
+import TurnContext from "../contexts/TurnContext";
 import EnergyContext from "../contexts/EnergyContext";
 import EarthHealthContext from "../contexts/EarthHealthContext";
 import Footer from "../components/Footer";
@@ -20,7 +21,7 @@ const Game = () => {
   const [cardsDrawPile, setCardsDrawPile] = useState(
     cardsList.filter((e) => e.isStarterDeck)
   );
-  const [turn, setTurn] = useState(15);
+  const {turn, setTurn} = useContext(TurnContext);
   const { energy, setEnergy } = useContext(EnergyContext);
   const { hearthHealth, setHearthHealth } = useContext(EarthHealthContext);
 
