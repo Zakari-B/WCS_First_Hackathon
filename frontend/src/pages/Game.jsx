@@ -42,26 +42,10 @@ const Game = () => {
     setShopOpen(!shopOpen);
   };
 
-  /*
-  Organisation d'un tour :
-OK   1) - Piocher 1 card X 5;
-OK        A chaque fois, si cardsDrawPile !== [], alors push random de cardsDiscard dans DrawPile
-OK      - push Card dans la Hand
-OK      - Retrait de la carte dans la drawpile
-OK              Si DrawPile === [], ne pas afficher visuellement de DrawPile
-
-OK 2) - Ecoute : onClick sur les cards, => 
-OK                   Energie OK ? ajout à la Discard, retrait de la Hand, baisser Energie
-OK                   Energie NOK ? Ne pas jouer
-
-
-  // Etape suivante
-  3) ShopModal qui apparait
-      onClick => ajouter au deck, ferme shopModal
-      Désincrèmenter turn
-      Retour à l'étape 1
-
-*/
+  useEffect(() => {
+    setHearthHealth(0);
+    setPlayerScore(0);
+  }, []);
 
   const piocheCartes = (drawEffect = false, toRemoveId = false) => {
     let starterIds = cardsHand.map((card) => card.id);
@@ -76,8 +60,7 @@ OK                   Energie NOK ? Ne pas jouer
       ];
     }
 
-    // vérifier si pioche suffisante pour avoir 5 carte
-    // si nok rajouter à pioche la défausse
+    // Vérification si la pioche est suffisante pour avoir 5 cartes, si NOK rajouter la défausse à la pioche
     if (cardsDrawPile.length + cardsHand.length < 5) {
       newDrawPile = [...newDrawPile, ...newDiscard];
       newDiscard = [];
@@ -158,13 +141,7 @@ OK                   Energie NOK ? Ne pas jouer
         setEnergy(energy + cardsList.filter((card) => card.id === id)[0].cost);
       }
     }
-
-    // vérifier si la carte est dans la hand ou dans le cardsDiscard
   };
-
-  // -          onClick sur fin de tour =>
-  // cardsHand push dans cardsDiscard
-  //       IF Turn === 0 => Modal Partie finie, bouton redirect page result
 
   const handlePlay = (e) => {
     setHearthHealth(
@@ -184,7 +161,6 @@ OK                   Energie NOK ? Ne pas jouer
         const effect = card.effect;
 
         if (effect === "draw" || effect === "megaDraw") {
-          // piocher 1-2 cartes
           effectPioche = piocheCartes(effect === "draw" ? 1 : 2, card.id);
         }
 
@@ -216,19 +192,7 @@ OK                   Energie NOK ? Ne pas jouer
             image: "/factory.png",
             isStarterDeck: false,
           });
-
-        console.log("effectNewCards", effectNewCards);
-
-        if (effect === "get") {
-        }
-        // ajouter un achat supplémentaire dans le shop
       });
-
-    // {
-    //   drawPile: newDrawPileToSet,
-    //   discard: [...newDiscard],
-    //   hand: cardsListToSet,
-    // }
 
     if (Object.keys(effectPioche).length) {
       setCardsHand(effectPioche.hand);
@@ -273,8 +237,6 @@ OK                   Energie NOK ? Ne pas jouer
 
   useEffect(() => {
     if (turn - 1 <= 0) {
-      // axios post
-
       const today = new Date();
       const dateAsString =
         today.getFullYear() +
@@ -283,22 +245,12 @@ OK                   Energie NOK ? Ne pas jouer
         "-" +
         today.getDate().toString().padStart(2, "0");
 
-      console.log("axios post", {
+      axios.post("http://localhost:5000/scores", {
         playerName: playerName,
         score: hearthHealth,
         date: dateAsString,
       });
-
-      axios
-        .post("http://localhost:5000/scores", {
-          playerName: playerName,
-          score: hearthHealth,
-          date: dateAsString,
-        })
-        .then((res) => {
-          console.log("res", res);
-        });
-        setPlayerScore(hearthHealth)
+      setPlayerScore(hearthHealth);
       navigate("/GameOver", { replace: true });
     } else piocheCartes();
   }, [turn]);

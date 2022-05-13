@@ -5,8 +5,6 @@ import TurnContext from "../contexts/TurnContext";
 import "../styles/GameOver.css";
 
 const GameOver = () => {
-  // let points = 50;
-  // let nPoints = -50;
   const { playerName, playerScore } = useContext(PlayerContext);
   const { setTurn } = useContext(TurnContext);
 
