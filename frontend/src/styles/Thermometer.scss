@@ -1,0 +1,35 @@
+.thermo-container {
+  width: 200px;
+  height: 90px;
+  position: absolute;
+  top: 50%;
+  left: -50px;
+}
+
+.thermo-box {
+  user-select: none;
+  margin:auto;
+  position: relative;
+  height: 260px;
+  width: 130px;
+
+  .thermoBall{
+    position: absolute;
+    background-color: red;
+    width: 22%;
+    height: 11%;
+    left: 39%;
+    top:35%;
+    border-radius:50%;
+  }
+
+  .thermoBar {
+    position: absolute;
+    left: 44.5%;
+    bottom: 60%;
+    background-color: red;
+    border-radius:5px;
+    width: 11%;
+    height: 36%;
+  }
+}

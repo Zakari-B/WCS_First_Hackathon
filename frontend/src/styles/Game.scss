@@ -1,0 +1,89 @@
+.GameContainer {
+    position: relative;
+    display:flex;
+    flex-direction:column;
+    height:calc(100vh - 120px);
+    width:100%;
+}
+
+.GameContainerUpper {
+    display:flex;
+    height:50%;
+    width:100%;
+}
+
+.EarthContainer {
+    min-width:25%;
+}
+
+.EarthContainer > .spaceImg {
+    position:absolute;
+    top:0;
+    left:0;
+    height:45%;
+    width:100%;
+  }
+
+.ShopContainer {
+    display:flex;
+    align-items:center;
+    min-height:100%;
+    width:70%;
+}
+
+.GameTray {
+    position: relative;
+    display:flex;
+    flex-direction:row;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 40% 70%;
+    height:61%;
+    width:100%;
+    box-shadow: 0 -10px 15px 0px #010b1a;
+}
+
+.HandInner {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    height:100%;
+    width:100%;
+}
+
+.ShopDiv {
+    position:relative;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items:center;
+    height:90%;
+    width:100%;
+    margin:auto;
+    background-color: rgba(119, 119, 119, 0.2);
+    border: 2px solid rgb(109, 109, 109);
+    border-radius: 15px;
+    filter: opacity(0);
+    transition: 0.3s filter ease-in-out;
+}
+
+.ShopDiv::before{
+    content:"select a new card...";
+    position:absolute;
+    top:0;
+    margin-top: 2.0vh;
+    font-size: 3.2vh;
+    font-weight: bold;
+    font-family: var(--font-family-text);
+    color:#444444
+}
+
+.ShopDiv-show {
+    filter: opacity(1);
+}
+
+.ShopCard {
+    height: 45%;
+    width: 30%;
+}

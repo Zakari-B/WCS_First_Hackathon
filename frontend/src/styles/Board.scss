@@ -1,0 +1,28 @@
+.Deck {
+    margin-top: 30px;
+    margin-left: 20px;
+    width:15%;
+}
+
+.Hand {
+    min-height:100%;
+    width:70%;
+}
+
+.Discard {
+    margin-top: 30px;
+    margin-right: 20px;
+    width:15%;
+}
+
+.CardContainer {
+    position:relative;
+    display:flex;
+    flex-direction:row;
+    align-items: flex-end;
+    justify-content:space-around;
+    height:90%;
+    width:90%;
+    margin:auto;
+    padding-bottom: 1%
+}

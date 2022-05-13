@@ -1,0 +1,53 @@
+.earthContainer {
+  position: relative;
+  width: 60%;
+  height: 60%;
+  user-select: none;
+
+  .earthImg {
+    position: absolute;
+    top: 0%;
+    left: 44%;
+  }
+
+  @keyframes score-animation {
+    0% {
+      transform: translateY(500%);
+      filter: opacity(0);
+    }
+    33% {
+      filter: opacity(1);
+    }
+    66% {
+      filter: opacity(1);
+    }
+    100% {
+      transform: translateY(0%);
+      filter: opacity(0);
+    }
+  }
+
+  .scoring {
+    position: absolute;
+    left: 150%;
+    top: 20%;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: var(--font-family-text);
+    z-index: 5;
+    filter:opacity(0)
+  }
+
+  .scoring-anim {
+    animation: score-animation 1.5s ease-in-out;
+    animation-fill-mode: both;
+  }
+
+  .scoring-green {
+    color: green;
+  }
+
+  .scoring-red {
+    color: red;
+  }
+}

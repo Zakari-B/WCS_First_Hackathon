@@ -1,0 +1,49 @@
+.endContainer {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+	background-image: url("https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80");
+	background-size: cover;
+}
+
+.glassMorphEnd {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 66%;
+	height: auto;
+	padding: 6%;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 16px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.title-end {
+	font-size: clamp(2.5rem, 6vw, 8rem);
+	font-family: var(--font-family-text);
+}
+.text-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 5%;
+}
+.img-end {
+	position: absolute;
+	width: 25%;
+	right: -50px;
+	bottom: -50px;
+}
+.paragraph-end {
+	font-size: clamp(1.5rem, 3vw, 6rem);
+}
+.btn {
+	margin-top: 7%;
+	background-color: rgb(165 210 70);
+	font-family: var(--font-family-text);
+}

@@ -1,0 +1,24 @@
+.battery-container {
+  width: 200px;
+  height: 90px;
+  position: absolute;
+  top: -25px;
+  left: 15%;
+}
+
+.battery-box {
+  user-select: none;
+  margin:auto;
+  position: relative;
+  transform: rotate(90deg);
+  height: 130px;
+  width: 65px;
+
+  .batteryBar {
+    position: absolute;
+    left: 20%;
+    background-color: green;
+    width: 60%;
+    height: 16%;
+  }
+}

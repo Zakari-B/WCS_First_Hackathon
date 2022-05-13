@@ -1,0 +1,18 @@
+{
+    "name": "undefined_hackaton_template",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "setup": "npm i && npm --prefix ./frontend i && npm --prefix ./backend i",
+        "dev": "concurrently -n front,back -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"npm --prefix ./frontend run dev\" \"npm --prefix ./backend run dev\"",
+        "dev-front": "npm --prefix ./frontend run dev",
+        "dev-back": "npm --prefix ./backend run dev"
+    },
+    "keywords": [],
+    "author": "Team Undefined",
+    "license": "",
+    "dependencies": {
+        "concurrently": "^7.1.0"
+    }
+}
