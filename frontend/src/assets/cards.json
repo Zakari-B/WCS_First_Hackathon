@@ -139,7 +139,7 @@
         "text": "12 soins",
         "value": 12,
         "effect": null,
-        "image": "/tree.png",
+        "image": "/greta.png",
         "isStarterDeck": false
     },
     {
@@ -169,8 +169,8 @@
         "name": "Centre de tri",
         "cost": 2,
         "positif": true,
-        "text": "6 soins",
-        "value": 6,
+        "text": "7 soins",
+        "value": 7,
         "effect": null,
         "image": "/tri.png",
         "isStarterDeck": false
@@ -180,8 +180,8 @@
         "name": "Paille en carton",
         "cost": 1,
         "positif": true,
-        "text": "1 soin. Détruis une carte de ton deck",
-        "value": 1,
+        "text": "5 soins",
+        "value": 5,
         "effect": "get",
         "image": "/carton.png",
         "isStarterDeck": false
@@ -254,7 +254,7 @@
     },
     {
         "id": 24,
-        "name": "Pisser sous la douche",
+        "name": "Une douche rapide",
         "cost": "0",
         "positif": true,
         "text": "1 soin",
@@ -268,8 +268,8 @@
         "name": "Paille en plastique",
         "cost": 1,
         "positif": false,
-        "text": "1 dégât. Détruise une carte de ton deck",
-        "value": -1,
+        "text": "5 dégâts",
+        "value": -5,
         "effect": "get",
         "image": "/plastique.png",
         "isStarterDeck": false
@@ -301,8 +301,8 @@
         "name": "Déforestation",
         "cost": 2,
         "positif": false,
-        "text": "6 dégâts",
-        "value": -6,
+        "text": "7 dégâts",
+        "value": -7,
         "effect": null,
         "image": "/deforestation.png",
         "isStarterDeck": false

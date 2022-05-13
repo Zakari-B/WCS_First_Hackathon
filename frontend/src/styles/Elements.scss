@@ -1,7 +1,9 @@
 .pioche-txt {
+    font-family: 'Overpass', sans-serif;
     font-size: 1.4rem;
     font-weight: 600;
     color: #ffffff;
+    text-align: center;
 }
 
 .playButton {
@@ -41,7 +43,7 @@
   
   .btn-type:hover {
     transition: all .5s;
-    box-shadow: 1px 1px 15px 10px rgba(101, 187, 190, 0.356);
+    box-shadow: 1px 1px 15px 5px rgba(101, 187, 190, 0.356);
   }
   
   .btn-type:before {
@@ -64,3 +66,14 @@
     left: 100%;
   }
   
+  .translationUp {
+    transform: translate(0%, -50%);
+  }
+
+  .translationLeft {
+    transform: translate(-100%, -50%);
+  }
+
+  .cardListModal .card {
+    margin: 0 10px;
+  }

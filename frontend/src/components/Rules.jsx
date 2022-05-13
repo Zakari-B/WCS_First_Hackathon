@@ -27,7 +27,6 @@ const Rules = () => {
 		},
 	];
 	const [isOpen, setOpen] = useState(false);
-  
 	return (
 		<div>
 			<button type="button" onClick={() => setOpen(!isOpen)}>
@@ -42,17 +41,18 @@ const Rules = () => {
 					className="text-gray-800 w-full bg-gray-200/90 p-6 flex flex-col"
 					onClick={() => setOpen(!isOpen)}
 				>
-					<h2 className="text-5xl font-semibold">Comment jouer ?</h2>
-					<p className="text-2xl">
+					<h2 className="text-4xl font-semibold">Comment jouer ?</h2>
+					<p className="text-xl">
 						<br />
-						Human vs Earth est un jeu de cartes. <br /> Vous commencez la partie
-						avec un paquet de 10 cartes : 4 forêts, 4 usines, un politicien et
-						une éolienne. Chaque carte est soit positive pour la planète soit
-						négative.
+						Human vs Planet est un jeu de cartes. <br /> Vous commencez la
+						partie avec un paquet de 10 cartes : 4 forêts, 4 usines, un
+						politicien et une éolienne. Chaque carte est soit positive pour la
+						planète soit négative.
 						<br /> <br />
 						Le but du jeu : jouer en même temps que d’autres joueurs pour
 						impacter selon votre goût l’état de la planète.
 					</p>
+					<br />
 					<div className="flex justify-around">
 						<div className="flex flex-col items-center">
 							<Card card={cardSample[0]} />
@@ -66,10 +66,10 @@ const Rules = () => {
 
 					<br />
 					<br />
-					<h2 className="text-5xl font-semibold">
+					<h2 className="text-4xl font-semibold">
 						Déroulement d’un tour de jeu :
 					</h2>
-					<p className="text-2xl">
+					<p className="text-xl">
 						<br />
 						La partie dure 20 tours. Chaque tour, vous avez 3 énergies qui vous
 						permettent de jouer des cartes. Une fois que vous avez fini votre
