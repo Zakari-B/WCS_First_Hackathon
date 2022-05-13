@@ -4,6 +4,7 @@ import Earth from "../components/Earth.jsx";
 import Shop from "../components/Shop.jsx";
 import Board from "../components/Board.jsx";
 import "../styles/Game.scss";
+import TurnContext from "../contexts/TurnContext";
 import EnergyContext from "../contexts/EnergyContext";
 import EarthHealthContext from "../contexts/EarthHealthContext";
 import PlayerContext from "../contexts/PlayerContext";
@@ -23,10 +24,10 @@ const Game = () => {
   const [cardsDrawPile, setCardsDrawPile] = useState(
     cardsList.filter((e) => e.isStarterDeck)
   );
-  const [turn, setTurn] = useState(15);
+  const { turn, setTurn } = useContext(TurnContext);
   const { energy, setEnergy } = useContext(EnergyContext);
   const { hearthHealth, setHearthHealth } = useContext(EarthHealthContext);
-  const { playerName } = useContext(PlayerContext);
+  const { playerName, setPlayerScore } = useContext(PlayerContext);
 
   let navigate = useNavigate();
 
@@ -271,19 +272,33 @@ OK                   Energie NOK ? Ne pas jouer
   };
 
   useEffect(() => {
-    if (turn - 1 === 0) {
+    if (turn - 1 <= 0) {
+      // axios post
+
+      const today = new Date();
+      const dateAsString =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1).toString().padStart(2, "0") +
+        "-" +
+        today.getDate().toString().padStart(2, "0");
+
       console.log("axios post", {
         playerName: playerName,
         score: hearthHealth,
-        date: new Date(),
-      });
-      // axios post
-      axios.post("http://localhost:5000/scores", {
-        playerName: playerName,
-        score: hearthHealth,
-        date: new Date(),
+        date: dateAsString,
       });
 
+      axios
+        .post("http://localhost:5000/scores", {
+          playerName: playerName,
+          score: hearthHealth,
+          date: dateAsString,
+        })
+        .then((res) => {
+          console.log("res", res);
+        });
+        setPlayerScore(hearthHealth)
       navigate("/GameOver", { replace: true });
     } else piocheCartes();
   }, [turn]);
@@ -305,7 +320,6 @@ OK                   Energie NOK ? Ne pas jouer
               cardsDiscard={cardsDiscard}
               cardsDrawPile={cardsDrawPile}
               buyCard={buyCard}
-              setShopOpen={setShopOpen}
             />
           </div>
         </div>
@@ -320,6 +334,7 @@ OK                   Energie NOK ? Ne pas jouer
             handlePlay={handlePlay}
             handleFinishTurn={handleFinishTurn}
             shopOpen={shopOpen}
+            setShopOpen={setShopOpen}
           />
         </div>
       </div>

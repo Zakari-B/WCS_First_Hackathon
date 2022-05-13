@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
+import TurnContext from "../contexts/TurnContext";
 import Hud from "./Hud";
 import Rules from "./Rules.jsx"
 import "../styles/Header.css";
 import logo from "../assets/logo-small.png";
 const Header = () => {
-  let tour = 1;
+  let {turn} = useContext(TurnContext);
   return (
     <>
       <div>
@@ -15,7 +16,7 @@ const Header = () => {
             <li className="navigation-name">
               <Link to="/">Accueil</Link>
             </li>
-            <li>Tour: {tour++}
+            <li>Tour restant: {turn-1}
             </li>
             <li>
               <Hud />

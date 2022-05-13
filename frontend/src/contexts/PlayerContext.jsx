@@ -1,16 +1,14 @@
 import React, { createContext, useState } from "react";
-// create the context object here…
+
 const PlayerContext = createContext();
 export default PlayerContext;
-// and then export a wrapper that manages state :
 
-// eslint-disable-next-line react/prop-types
 export function PlayerContextProvider({ children }) {
   const [playerName, setPlayerName] = useState("");
+  const [playerScore, setPlayerScore] = useState(0);
 
   return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <PlayerContext.Provider value={{ playerName, setPlayerName }}>
+    <PlayerContext.Provider value={{ playerName, setPlayerName, playerScore, setPlayerScore }}>
       {children}
     </PlayerContext.Provider>
   );
