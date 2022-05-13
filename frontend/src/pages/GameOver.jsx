@@ -5,8 +5,8 @@ import TurnContext from "../contexts/TurnContext";
 import "../styles/GameOver.css";
 
 const GameOver = () => {
-	const { playerName, playerScore } = useContext(PlayerContext);
-	const { setTurn } = useContext(TurnContext);
+  const { playerName, playerScore } = useContext(PlayerContext);
+  const { setTurn } = useContext(TurnContext);
 
 	useEffect(() => {
 		setTurn(12);

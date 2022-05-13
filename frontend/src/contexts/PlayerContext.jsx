@@ -8,7 +8,9 @@ export function PlayerContextProvider({ children }) {
   const [playerScore, setPlayerScore] = useState(0);
 
   return (
-    <PlayerContext.Provider value={{ playerName, setPlayerName, playerScore, setPlayerScore }}>
+    <PlayerContext.Provider
+      value={{ playerName, setPlayerName, playerScore, setPlayerScore }}
+    >
       {children}
     </PlayerContext.Provider>
   );
