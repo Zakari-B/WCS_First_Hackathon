@@ -1,14 +1,12 @@
 const express = require("express");
 
-const { Controller } = require("./controllers");
-// const auth = require("./middlewares/auth");
+const { HvP } = require("./controllers");
 
 const router = express.Router();
 
-router.get("/path/toGet", (auth), Controller.method);
-router.post("/path/toPost", (auth), Controller.method);
-router.put("/path/toPut", (auth), Controller.method);
-router.delete("/path/toDelete", (auth), Controller.method);
-
+router.get("/scores", HvP.getScores);
+router.get("/action", HvP.getAction);
+router.post("/score", HvP.postScore);
+router.post("/action", HvP.postAction);
 
 module.exports = router;
