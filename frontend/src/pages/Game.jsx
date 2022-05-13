@@ -243,6 +243,8 @@ OK                   Energie NOK ? Ne pas jouer
   };
 
   const handleFinishTurn = () => {
+    setCardsDiscard([...cardsDiscard, ...cardsHand]);
+    setCardsHand([]);
     setShopOpen(false);
     setTurn(turn - 1);
     setEnergy(3);
