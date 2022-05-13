@@ -1,99 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Global.css";
 import green from "../assets/earth_green.png";
 import polluted from "../assets/earth_polluted.png";
+import axios from "axios";
+
 const Global = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [isClicked2, setIsClicked2] = useState(false);
-  const highScores = [
-    {
-      pseudo: "TerryGrigri",
-      score: 198,
-    },
-    {
-      pseudo: "Aurora_Pink_Hair",
-      score: 162,
-    },
-    {
-      pseudo: "Anthony-92",
-      score: 135,
-    },
-    {
-      pseudo: "JuJuKayak",
-      score: 122,
-    },
-    {
-      pseudo: "KevPessouille",
-      score: 149,
-    },
-    {
-      pseudo: "Valosch",
-      score: 155,
-    },
-    {
-      pseudo: "Seb-best-wilder",
-      score: 149,
-    },
-    {
-      pseudo: "JF-bad-connection",
-      score: 148,
-    },
-    {
-      pseudo: "Ismamamama",
-      score: 102,
-    },
-    {
-      pseudo: "Ptit Crabe",
-      score: 199,
-    },
-    {
-      pseudo: "Zaki",
-      score: -199,
-    },
-    {
-      pseudo: "Basile52",
-      score: -120,
-    },
-    {
-      pseudo: "Jean Jean",
-      score: -69,
-    },
-    {
-      pseudo: "🚀G.Antho🚀",
-      score: -112,
-    },
-    {
-      pseudo: "TeamOutsiders4Ever",
-      score: -181,
-    },
-    {
-      pseudo: "page_404",
-      score: -120,
-    },
-    {
-      pseudo: "Alibaba",
-      score: -153,
-    },
-    {
-      pseudo: "Benoit-sans-son-chapeau",
-      score: -192,
-    },
-    {
-      pseudo: "Vigneronnerie",
-      score: -176,
-    },
-    {
-      pseudo: "while(true)",
-      score: -127,
-    },
-  ];
-  const goodScores = highScores
-    .filter((user) => user.score > 0)
-    .reduce((a, b) => a + b.score, 0);
-  const evilScores = highScores
-    .filter((user) => user.score < 0)
-    .reduce((a, b) => a + b.score, 0);
+  const [highScores, setHighScores] = useState([]);
+  const [goodScores, setGoodScores] = useState([]);
+  const [evilScores, setEvilScores] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/scores").then((res) => {
+      console.log(res);
+      setHighScores(res.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    setGoodScores(
+      highScores
+        .filter((user) => user.score > 0)
+        .reduce((a, b) => a + b.score, 0)
+    );
+
+    setEvilScores(
+      highScores
+        .filter((user) => user.score < 0)
+        .reduce((a, b) => a + b.score, 0)
+    );
+  }, [highScores]);
 
   return (
     <>
@@ -151,17 +89,18 @@ const Global = () => {
                   <th>Pseudo</th>
                   <th>Points</th>
                 </tr>
-                {highScores
-                  .sort((a, b) => {
-                    return b.score - a.score;
-                  })
-                  .slice(0, 10)
-                  .map((user) => (
-                    <tr key={"list" + user.pseudo}>
-                      <th>{user.pseudo}</th>
-                      <th>{user.score}</th>
-                    </tr>
-                  ))}
+                {highScores.length &&
+                  highScores
+                    .sort((a, b) => {
+                      return b.score - a.score;
+                    })
+                    .slice(0, 10)
+                    .map((user) => (
+                      <tr>
+                        <th>{user.playerName}</th>
+                        <th>{user.score}</th>
+                      </tr>
+                    ))}
               </tbody>
             </table>
           </div>
@@ -179,17 +118,18 @@ const Global = () => {
                   <th>Pseudo</th>
                   <th>Points</th>
                 </tr>
-                {highScores
-                  .sort((a, b) => {
-                    return a.score - b.score;
-                  })
-                  .slice(0, 10)
-                  .map((user) => (
-                    <tr key={"list" + user.pseudo}>
-                      <th>{user.pseudo}</th>
-                      <th>{user.score}</th>
-                    </tr>
-                  ))}
+                {highScores.length &&
+                  highScores
+                    .sort((a, b) => {
+                      return a.score - b.score;
+                    })
+                    .slice(0, 10)
+                    .map((user) => (
+                      <tr>
+                        <th>{user.playerName}</th>
+                        <th>{user.score}</th>
+                      </tr>
+                    ))}
               </tbody>
             </table>
           </div>

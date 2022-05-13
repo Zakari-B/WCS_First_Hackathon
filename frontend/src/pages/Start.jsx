@@ -1,11 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PlayerContext from "../contexts/PlayerContext";
 import "../styles/Start.css";
 import logo from "../assets/logo-hvh-light.png";
+import TurnContext from "../contexts/TurnContext";
 
 const Start = () => {
   const { playerName, setPlayerName } = useContext(PlayerContext);
+  const { setTurn } = useContext(TurnContext);
+
+  useEffect(() => {
+    setTurn(15);
+  }, []);
 
   return (
     <header>

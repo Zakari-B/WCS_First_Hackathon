@@ -7,7 +7,7 @@ import "../styles/GameOver.css";
 const GameOver = () => {
   let points = 50;
   let nPoints = -50;
-  const { playerName } = useContext(PlayerContext);
+  const { playerName, playerScore } = useContext(PlayerContext);
   const { setTurn } = useContext(TurnContext);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const GameOver = () => {
                 />
               </div>
               <p className="paragraph-end">
-                Impact de {playerName} : {points} points.
+                Impact de {playerName} : {playerScore} points.
               </p>
               <p className="paragraph-end">
                 “ Bravo, tu as réussi à sauver la Terre ! ”
@@ -49,7 +49,7 @@ const GameOver = () => {
                 />
               </div>
               <p className="paragraph-end">
-                Impact de {playerName} : {nPoints} points.
+                Impact de {playerName} : {playerScore} points.
               </p>
               <p className="paragraph-end">
                 “ Bravo, tu as réussi à détuire la Terre ! ”

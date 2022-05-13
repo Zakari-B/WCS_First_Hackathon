@@ -7,8 +7,10 @@ import "../styles/Game.scss";
 import TurnContext from "../contexts/TurnContext";
 import EnergyContext from "../contexts/EnergyContext";
 import EarthHealthContext from "../contexts/EarthHealthContext";
+import PlayerContext from "../contexts/PlayerContext";
 import Footer from "../components/Footer";
 import CardsContext from "../contexts/CardsContext";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Game = () => {
@@ -22,9 +24,10 @@ const Game = () => {
   const [cardsDrawPile, setCardsDrawPile] = useState(
     cardsList.filter((e) => e.isStarterDeck)
   );
-  const {turn, setTurn} = useContext(TurnContext);
+  const { turn, setTurn } = useContext(TurnContext);
   const { energy, setEnergy } = useContext(EnergyContext);
   const { hearthHealth, setHearthHealth } = useContext(EarthHealthContext);
+  const { playerName, setPlayerScore } = useContext(PlayerContext);
 
   let navigate = useNavigate();
 
@@ -269,7 +272,33 @@ OK                   Energie NOK ? Ne pas jouer
   };
 
   useEffect(() => {
-    if (turn - 1 === 0) {
+    if (turn - 1 <= 0) {
+      // axios post
+
+      const today = new Date();
+      const dateAsString =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1).toString().padStart(2, "0") +
+        "-" +
+        today.getDate().toString().padStart(2, "0");
+
+      console.log("axios post", {
+        playerName: playerName,
+        score: hearthHealth,
+        date: dateAsString,
+      });
+
+      axios
+        .post("http://localhost:5000/scores", {
+          playerName: playerName,
+          score: hearthHealth,
+          date: dateAsString,
+        })
+        .then((res) => {
+          console.log("res", res);
+        });
+        setPlayerScore(hearthHealth)
       navigate("/GameOver", { replace: true });
     } else piocheCartes();
   }, [turn]);

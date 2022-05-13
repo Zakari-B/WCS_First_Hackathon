@@ -5,9 +5,10 @@ export default PlayerContext;
 
 export function PlayerContextProvider({ children }) {
   const [playerName, setPlayerName] = useState("");
+  const [playerScore, setPlayerScore] = useState(0);
 
   return (
-    <PlayerContext.Provider value={{ playerName, setPlayerName }}>
+    <PlayerContext.Provider value={{ playerName, setPlayerName, playerScore, setPlayerScore }}>
       {children}
     </PlayerContext.Provider>
   );
