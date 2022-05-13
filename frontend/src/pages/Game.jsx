@@ -24,6 +24,7 @@ const Game = () => {
   const [cardsDrawPile, setCardsDrawPile] = useState(
     cardsList.filter((e) => e.isStarterDeck)
   );
+  const [healthChange, setHealthChange] = useState(false);
   const { turn, setTurn } = useContext(TurnContext);
   const { energy, setEnergy } = useContext(EnergyContext);
   const { hearthHealth, setHearthHealth } = useContext(EarthHealthContext);
@@ -167,12 +168,13 @@ OK                   Energie NOK ? Ne pas jouer
   //       IF Turn === 0 => Modal Partie finie, bouton redirect page result
 
   const handlePlay = (e) => {
-    setHearthHealth(
-      hearthHealth +
-        cardsHand
-          .filter((card) => card.selected)
-          .reduce((acc, val) => acc + val.value, 0)
-    );
+    const healthChange = cardsHand
+      .filter((card) => card.selected)
+      .reduce((acc, val) => acc + val.value, 0);
+
+    setHealthChange(healthChange);
+
+    setHearthHealth(hearthHealth + healthChange);
 
     const effectNewCards = [];
     let effectPioche = {};
@@ -298,7 +300,7 @@ OK                   Energie NOK ? Ne pas jouer
         .then((res) => {
           console.log("res", res);
         });
-        setPlayerScore(hearthHealth)
+      setPlayerScore(hearthHealth);
       navigate("/GameOver", { replace: true });
     } else piocheCartes();
   }, [turn]);
@@ -309,7 +311,7 @@ OK                   Energie NOK ? Ne pas jouer
       <div className="GameContainer">
         <div className="GameContainerUpper">
           <div className="EarthContainer">
-            <Earth />
+            <Earth healthChange={healthChange}/>
           </div>
 
           <div className="ShopContainer">
