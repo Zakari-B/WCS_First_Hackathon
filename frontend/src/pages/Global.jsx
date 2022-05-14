@@ -56,8 +56,8 @@ const Global = () => {
       return a.score - b.score;
     });
 
-    setUniqueGoodScores(sortByUnique(sortedScores));
-    setUniqueEvilScores(sortByUnique(sortedScores.reverse()));
+    setUniqueEvilScores(sortByUnique(sortedScores));
+    setUniqueGoodScores(sortByUnique(sortedScores.reverse()));
 
     setGoodScores(sumGoodScores);
     setEvilScores(sumEvilScores);
