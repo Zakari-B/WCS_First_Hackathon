@@ -1,0 +1,38 @@
+{
+    "name": "mvc-express",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "dev": "nodemon server.js",
+        "migrate": "node migrate.js",
+        "start": "node server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.27.2",
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.2",
+        "mysql2": "^2.3.3",
+        "path": "^0.12.7",
+        "undefined_hackaton_template": "file:.."
+    },
+    "rules": {
+        "no-console": [
+            "error",
+            {
+                "allow": [
+                    "warn",
+                    "error"
+                ]
+            }
+        ]
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15",
+        "prettier": "2.5.1"
+    }
+}

@@ -246,7 +246,7 @@ const Game = () => {
         (today.getMonth() + 1).toString().padStart(2, "0") +
         "-" +
         today.getDate().toString().padStart(2, "0");
-      axios.post("http://localhost:5000/scores", {
+      axios.post("http://hvp.dev4.me/scores", {
         playerName: playerName,
         score: hearthHealth,
         date: dateAsString,

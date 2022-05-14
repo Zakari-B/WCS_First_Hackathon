@@ -17,7 +17,7 @@ const Global = () => {
   const [globalScore, setGlobalScore] = useState(0);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/scores").then((res) => {
+    axios.get("http://hvp.dev4.me/scores").then((res) => {
       setHighScores(res.data);
     });
   }, []);
