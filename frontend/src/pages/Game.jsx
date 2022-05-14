@@ -246,11 +246,19 @@ const Game = () => {
         (today.getMonth() + 1).toString().padStart(2, "0") +
         "-" +
         today.getDate().toString().padStart(2, "0");
-      axios.post("http://hvp.dev4.me/scores", {
-        playerName: playerName,
-        score: hearthHealth,
-        date: dateAsString,
-      });
+      axios
+        .post("https://hvp.dev4.me/scores", {
+          playerName: playerName,
+          score: hearthHealth,
+          date: dateAsString,
+        })
+        .catch(() => {
+          axios.post("http://hvp.dev4.me/scores", {
+            playerName: playerName,
+            score: hearthHealth,
+            date: dateAsString,
+          });
+        });
       setPlayerScore(hearthHealth);
       navigate("/GameOver", { replace: true });
     } else piocheCartes();

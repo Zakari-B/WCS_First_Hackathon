@@ -15,25 +15,53 @@ const Global = () => {
   const [goodScores, setGoodScores] = useState(0);
   const [evilScores, setEvilScores] = useState(0);
   const [globalScore, setGlobalScore] = useState(0);
+  const [uniqueGoodScores, setUniqueGoodScores] = useState([]);
+  const [uniqueEvilScores, setUniqueEvilScores] = useState([]);
+
+  const sortByUnique = (sortedScores) => {
+    const uniquePlayers = [
+      ...new Set(sortedScores.map((score) => score.playerName)),
+    ];
+
+    return uniquePlayers.map((player) => {
+      let playerFound = false;
+      for (let i = 0; i < sortedScores.length && playerFound === false; i++)
+        if (sortedScores[i].playerName === player) playerFound = i;
+      return { playerName: player, score: sortedScores[playerFound].score };
+    });
+  };
 
   useEffect(() => {
-    axios.get("http://hvp.dev4.me/scores").then((res) => {
-      setHighScores(res.data);
-    });
+    axios
+      .get("https://hvp.dev4.me/scores")
+      .then((res) => {
+        setHighScores(res.data);
+      })
+      .catch(() => {
+        axios.get("http://hvp.dev4.me/scores").then((res) => {
+          setHighScores(res.data);
+        });
+      });
   }, []);
 
   useEffect(() => {
-    const newGoodScores = highScores
+    const sumGoodScores = highScores
       .filter((user) => user.score > 0)
       .reduce((a, b) => a + b.score, 0);
-    const newEvilScores = highScores
+    const sumEvilScores = highScores
       .filter((user) => user.score < 0)
       .reduce((a, b) => a + b.score, 0);
 
-    setGoodScores(newGoodScores);
+    const sortedScores = highScores.sort((a, b) => {
+      return a.score - b.score;
+    });
 
-    setEvilScores(newEvilScores);
-    setGlobalScore(newGoodScores + newEvilScores);
+    setUniqueGoodScores(sortByUnique(sortedScores));
+    setUniqueEvilScores(sortByUnique(sortedScores.reverse()));
+
+    setGoodScores(sumGoodScores);
+    setEvilScores(sumEvilScores);
+    setGlobalScore(sumGoodScores + sumEvilScores);
   }, [highScores]);
 
   return (
@@ -96,18 +124,13 @@ const Global = () => {
                   <th>Pseudo</th>
                   <th>Points</th>
                 </tr>
-                {highScores.length &&
-                  highScores
-                    .sort((a, b) => {
-                      return b.score - a.score;
-                    })
-                    .slice(0, 10)
-                    .map((user) => (
-                      <tr>
-                        <th>{user.playerName}</th>
-                        <th>{user.score}</th>
-                      </tr>
-                    ))}
+                {uniqueGoodScores.length &&
+                  uniqueGoodScores.slice(0, 10).map((user, index) => (
+                    <tr key={index}>
+                      <th>{user.playerName}</th>
+                      <th>{user.score}</th>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
@@ -125,18 +148,13 @@ const Global = () => {
                   <th>Pseudo</th>
                   <th>Points</th>
                 </tr>
-                {highScores.length &&
-                  highScores
-                    .sort((a, b) => {
-                      return a.score - b.score;
-                    })
-                    .slice(0, 10)
-                    .map((user) => (
-                      <tr>
-                        <th>{user.playerName}</th>
-                        <th>{user.score}</th>
-                      </tr>
-                    ))}
+                {uniqueEvilScores.length &&
+                  uniqueEvilScores.slice(0, 10).map((user, index) => (
+                    <tr key={index}>
+                      <th>{user.playerName}</th>
+                      <th>{user.score}</th>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
