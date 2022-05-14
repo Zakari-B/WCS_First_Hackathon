@@ -156,7 +156,7 @@
   {
     "id": 15,
     "name": "Ruche",
-    "cost": "0",
+    "cost": 0,
     "positif": true,
     "text": "1 soin. Pioche deux cartes",
     "value": 1,
@@ -182,7 +182,7 @@
     "positif": true,
     "text": "5 soins",
     "value": 5,
-    "effect": "get",
+    "effect": null,
     "image": "/carton.png",
     "isStarterDeck": false
   },
@@ -200,7 +200,7 @@
   {
     "id": 19,
     "name": "Voiture électrique",
-    "cost": "0",
+    "cost": 0,
     "positif": true,
     "text": "4 soins. Ajoute une usine dans ton deck",
     "value": 4,
@@ -222,7 +222,7 @@
   {
     "id": 21,
     "name": "Permaculture",
-    "cost": "0",
+    "cost": 0,
     "positif": true,
     "text": "1 soin. Gagne 1 Energie",
     "value": 1,
@@ -255,7 +255,7 @@
   {
     "id": 24,
     "name": "Douche rapide",
-    "cost": "0",
+    "cost": 0,
     "positif": true,
     "text": "1 soin",
     "value": 1,
@@ -270,14 +270,14 @@
     "positif": false,
     "text": "5 dégâts",
     "value": -5,
-    "effect": "get",
+    "effect": null,
     "image": "/plastique.png",
     "isStarterDeck": false
   },
   {
     "id": 26,
     "name": "Smartphone",
-    "cost": "0",
+    "cost": 0,
     "positif": false,
     "text": "1 dégât. Pioche deux cartes",
     "value": -1,
@@ -310,7 +310,7 @@
   {
     "id": 29,
     "name": "Pesticide",
-    "cost": "0",
+    "cost": 0,
     "positif": false,
     "text": "1 dégât. Gagne 1 Energie",
     "value": -1,
@@ -321,7 +321,7 @@
   {
     "id": 30,
     "name": "Diesel",
-    "cost": "0",
+    "cost": 0,
     "positif": false,
     "text": "4 dégâts. Ajoute un arbre dans ton deck",
     "value": -4,
@@ -365,7 +365,7 @@
   {
     "id": 34,
     "name": "Mégôt de cigarette",
-    "cost": "0",
+    "cost": 0,
     "positif": false,
     "text": "1 dégât",
     "value": -1,
