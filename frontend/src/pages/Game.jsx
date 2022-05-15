@@ -14,7 +14,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Game = () => {
-  const { cardsList } = useContext(CardsContext);
+  const { cardsList, setCardsList } = useContext(CardsContext);
   const [shopOpen, setShopOpen] = useState(false);
   const [cardsDeck, setCardsDeck] = useState(
     cardsList.filter((e) => e.isStarterDeck)
@@ -155,6 +155,7 @@ const Game = () => {
 
     const effectNewCards = [];
     let effectPioche = {};
+    let newEnergy = energy;
 
     cardsHand
       .filter((card) => card.selected)
@@ -166,9 +167,9 @@ const Game = () => {
           effectPioche = piocheCartes(effect === "draw" ? 1 : 2, card.id);
         }
 
-        if (effect === "gain") setEnergy(Math.min(energy + 1, 3));
+        if (effect === "gain") newEnergy = Math.min(newEnergy + 1, 3);
 
-        if (effect === "megaGain") setEnergy(Math.min(energy + 2, 3));
+        if (effect === "megaGain") newEnergy = Math.min(newEnergy + 2, 3);
 
         if (effect === "addArbre")
           effectNewCards.push({
@@ -196,10 +197,14 @@ const Game = () => {
           });
       });
 
+    setEnergy(newEnergy);
+    
     if (Object.keys(effectPioche).length) {
+      // QUE SI YA EFFET DE PIOCHE
       setCardsHand(effectPioche.hand);
       setCardsDiscard([...effectPioche.discard, ...effectNewCards]);
       setCardsDrawPile(effectPioche.drawPile);
+      // setCardsList(...cardsList, ...effectNewCards);
     } else {
       setCardsHand(cardsHand.filter((card) => !card.selected));
 
@@ -246,11 +251,19 @@ const Game = () => {
         (today.getMonth() + 1).toString().padStart(2, "0") +
         "-" +
         today.getDate().toString().padStart(2, "0");
-      axios.post("http://hvp.dev4.me/scores", {
-        playerName: playerName,
-        score: hearthHealth,
-        date: dateAsString,
-      });
+      axios
+        .post("https://hvp.dev4.me/scores", {
+          playerName: playerName,
+          score: hearthHealth,
+          date: dateAsString,
+        })
+        .catch(() => {
+          axios.post("http://hvp.dev4.me/scores", {
+            playerName: playerName,
+            score: hearthHealth,
+            date: dateAsString,
+          });
+        });
       setPlayerScore(hearthHealth);
       navigate("/GameOver", { replace: true });
     } else piocheCartes();

@@ -14,7 +14,7 @@ const Card = ({ card, handleCardClick, buyCard }) => {
       }}
     >
       <div className="card-top">
-        <p className="card-cost">{card.cost}</p>
+        <p className="card-cost">{card.cost.toString()}</p>
         <h1 className="card-title">{card.name}</h1>
         <div className="card-img">
           {" "}
