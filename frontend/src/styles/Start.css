@@ -46,10 +46,12 @@
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(5px);
 	font-family: var(--font-family-text);
+	font-size: 2.25rem;
 }
 .start-form {
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
+	justify-content: center;
 }
 .img-help {
 	width: 4vw;
@@ -66,26 +68,35 @@
 .img-help:hover {
 	background-color: rgb(165 210 70);
 	opacity: 1;
+	transition: 0.4s;
 }
 .hide {
-	display: none;
+	visibility: hidden;
 	width: 50%;
-	margin-left: 30vw;
+	margin-left: 34vw;
 	font-family: var(--font-family-text);
 	font-size: clamp(1rem, 1.5vw, 2.5rem);
 	position: absolute;
 	color: var(--background-card);
 	background-color: rgba(255, 255, 255, 0.774);
 	padding: 2%;
-	margin-top: 20vh;
+	margin-top: 17vh;
 	z-index: 1;
+	border-radius: 25px;
+	opacity: 0;
+	transition: visibility 0s linear 300ms, opacity 300ms;
 }
 .img-help:hover + .hide {
-	display: block;
+	visibility: visible;
+	opacity: 1;
+	transition: visibility 0s linear 0s, opacity 300ms;
 }
 .btn {
 	background-color: rgb(165 210 70);
 	font-family: var(--font-family-text);
+}
+.btn:hover{
+	transition: 0.4s;
 }
 
 @media screen and (min-width: 768px) {

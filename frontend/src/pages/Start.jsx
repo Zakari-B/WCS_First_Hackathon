@@ -15,7 +15,7 @@ const Start = () => {
 
   return (
     <header>
-      <div className="helpButton">
+      <div className="helpButton transition duration-150 ease-out hover:ease-in">
         <img
           src="https://www.svgrepo.com/show/305312/question-mark.svg"
           alt="question"
@@ -37,12 +37,12 @@ const Start = () => {
             draggable={false}
           />
           <div className="startInput">
-            <form className="flex justify-around items-center">
+            <form className="start-form">
               <input
                 name="player"
                 type="text"
                 placeholder="Entrez votre pseudo..."
-                className="text-input px-8 py-3 mx-8 bg-white/70 placeholder:text-slate-800 placeholder:text-center placeholder:text-lg text-2xl"
+                className="text-input m-2 text-gray-800 py-2 px-8 text-4xl rounded-lg font-bold mx-8 drop-shadow-md placeholder:text-slate-800 placeholder:text-lg "
                 onChange={(event) => {
                   setPlayerName(event.target.value);
                 }}
@@ -52,7 +52,7 @@ const Start = () => {
                   {" "}
                   <button
                     type="submit"
-                    className="btn m-2 text-gray-800 py-2 px-8 text-4xl rounded-lg font-bold mx-8 drop-shadow-md pt-4 hover:bg-white/40 hover:text-white"
+                    className="btn m-2 text-gray-800 py-2 px-8 text-4xl rounded-lg font-bold mx-8 drop-shadow-md hover:bg-white/40 hover:text-white"
                   >
                     Jouer
                   </button>
