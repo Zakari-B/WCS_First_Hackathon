@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Team.scss";
 import teamIcon from "../assets/team.png";
+import linkedinIcon from "../assets/svg/linkedin.svg";
+import githubIcon from "../assets/svg/github.svg";
 
 const Team = () => {
   return (
@@ -10,167 +12,107 @@ const Team = () => {
         <img
           src={teamIcon}
           alt="our team"
-          className="w-32 h-auto hover:text-green-500 hover:animate-bounce transition-all"
+          className="w-32 h-auto hover:text-green-500"
         />
         <h1 className="title-team">Team Undefined</h1>
         <p className="paragraph-team">- Codé en 24 HEURES -</p>
         <div className="profil-team ">
           <div className="team-box">
-            <img
-              src="https://avatars.githubusercontent.com/u/99882585?v=4"
-              alt=""
-              className="avatar"
-            />
+            <img src="/zakari.jpg" alt="" className="avatar" />
             <div className="icon-box">
               <a
                 href="https://www.linkedin.com/in/zakari-boureghda/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://www.svgrepo.com/show/204944/linkedin.svg"
-                  alt="linkedin"
-                  className="icon"
-                />
+                <img src={linkedinIcon} alt="linkedin" className="icon" />
               </a>
               <a
                 href="https://github.com/Zakari-B"
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://www.svgrepo.com/show/349375/github.svg"
-                  alt="github"
-                  className="icon"
-                />
+                <img src={githubIcon} alt="github" className="icon" />
               </a>
             </div>
             <p className="profil-name">Zakari</p>
           </div>
           <div className="team-box">
-            <img
-              src="https://avatars.githubusercontent.com/u/93570261?v=4"
-              alt=""
-              className="avatar"
-            />
+            <img src="/julien.jpg" alt="" className="avatar" />
             <div className="icon-box">
               <a
                 href="https://www.linkedin.com/in/julienvigneron/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://www.svgrepo.com/show/204944/linkedin.svg"
-                  alt="linkedin"
-                  className="icon"
-                />
+                <img src={linkedinIcon} alt="linkedin" className="icon" />
               </a>
               <a
                 href="https://github.com/gnos28"
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://www.svgrepo.com/show/349375/github.svg"
-                  alt="github"
-                  className="icon"
-                />
+                <img src={githubIcon} className="icon" />
               </a>
             </div>
             <p className="profil-name">Julien</p>
           </div>
           <div className="team-box">
-            <img
-              src="https://avatars.githubusercontent.com/u/100479719?v=4"
-              alt=""
-              className="avatar"
-            />
+            <img src="/lionel.jpg" alt="" className="avatar" />
             <div className="icon-box">
               <a
                 href="https://www.linkedin.com/in/lionel-manzetti/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://www.svgrepo.com/show/204944/linkedin.svg"
-                  alt="linkedin"
-                  className="icon"
-                />
+                <img src={linkedinIcon} alt="linkedin" className="icon" />
               </a>
               <a
                 href="https://github.com/LionelManzetti"
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://www.svgrepo.com/show/349375/github.svg"
-                  alt="github"
-                  className="icon"
-                />
+                <img src={githubIcon} className="icon" />
               </a>
             </div>
             <p className="profil-name">Lionel</p>
           </div>
           <div className="team-box">
-            <img
-              src="https://avatars.githubusercontent.com/u/100119300?v=4"
-              alt=""
-              className="avatar"
-            />
+            <img src="/anthony.png" alt="" className="avatar" />
             <div className="icon-box">
               <a
                 href="https://www.linkedin.com/in/anthony-aubert-994927176/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://www.svgrepo.com/show/204944/linkedin.svg"
-                  alt="linkedin"
-                  className="icon"
-                />
+                <img src={linkedinIcon} alt="linkedin" className="icon" />
               </a>
               <a
                 href="https://github.com/Antho-37"
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://www.svgrepo.com/show/349375/github.svg"
-                  alt="github"
-                  className="icon"
-                />
+                <img src={githubIcon} className="icon" />
               </a>
             </div>
             <p className="profil-name">Anthony</p>
           </div>
           <div className="team-box">
-            <img
-              src="https://avatars.githubusercontent.com/u/84743756?v=4"
-              alt=""
-              className="avatar"
-            />
+            <img src="/ophelie.png" alt="" className="avatar" />
             <div className="icon-box">
               <a
                 href="https://www.linkedin.com/in/ophelie-coudert/"
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://www.svgrepo.com/show/204944/linkedin.svg"
-                  alt="linkedin"
-                  className="icon"
-                />
+                <img src={linkedinIcon} alt="linkedin" className="icon" />
               </a>
               <a
                 href="https://github.com/Crab-Prog"
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src="https://www.svgrepo.com/show/349375/github.svg"
-                  alt="github"
-                  className="icon"
-                />
+                <img src={githubIcon} alt="github" className="icon" />
               </a>
             </div>
             <p className="profil-name">Ophélie</p>
