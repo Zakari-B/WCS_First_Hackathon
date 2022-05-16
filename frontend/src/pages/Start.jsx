@@ -21,7 +21,7 @@ const Start = () => {
           <img
             src={logo}
             alt="human vs earth"
-            className="select-none"
+            draggable={false} 
           />
           <div className="startInput">
             <form className="startForm">
@@ -48,7 +48,7 @@ const Start = () => {
             </form>
           </div>
           <div className="glassMorph0">
-            <img src={question} alt="" className="questionImg"/>
+            <img src={question} alt="" className="questionImg" draggable={false} />
             <p className="hide">
               Bienvenue sur Human vs Planet ! <br /> <br /> Un jeu qui vous invite à
               prendre parti pour soit sauver la planète, soit participer activement
