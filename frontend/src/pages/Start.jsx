@@ -11,7 +11,7 @@ const Start = () => {
   const { setTurn } = useContext(TurnContext);
 
   useEffect(() => {
-    setTurn(12);
+    setTurn(15);
   }, []);
 
   return (
