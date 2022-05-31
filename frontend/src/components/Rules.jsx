@@ -70,7 +70,7 @@ const Rules = () => {
           </h2>
           <p className="text-xl">
             <br />
-            La partie dure 12 tours. Chaque tour, vous avez 3 énergies qui vous
+            La partie dure 15 tours. Chaque tour, vous avez 3 énergies qui vous
             permettent de jouer des cartes. Une fois que vous avez fini votre
             tour, vous pouvez cliquer sur “Terminer le tour”.
             <br /> Vous pourrez alors choisir une nouvelle carte à ajouter à

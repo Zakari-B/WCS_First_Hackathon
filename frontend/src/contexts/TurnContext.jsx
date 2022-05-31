@@ -4,7 +4,7 @@ const TurnContext = createContext();
 export default TurnContext;
 
 export function TurnContextProvider({ children }) {
-  const [turn, setTurn] = useState(12);
+  const [turn, setTurn] = useState(15);
 
   return (
     <TurnContext.Provider value={{ turn, setTurn }}>

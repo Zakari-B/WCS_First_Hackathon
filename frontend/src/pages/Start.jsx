@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PlayerContext from "../contexts/PlayerContext";
-import "../styles/Start.css";
-import logo from "../assets/logo-hvh-light.png";
 import TurnContext from "../contexts/TurnContext";
+import "../styles/Start.scss";
+import logo from "../assets/logo-hvh-light.png";
+import question from "../assets/svg/question-mark.svg";
 
 const Start = () => {
   const { playerName, setPlayerName } = useContext(PlayerContext);
@@ -14,35 +15,21 @@ const Start = () => {
   }, []);
 
   return (
-    <header>
-      <div className="helpButton">
-        <img
-          src="https://www.svgrepo.com/show/305312/question-mark.svg"
-          alt="question"
-          className="img-help select-none"
-          draggable={false}
-        />
-        <p className="hide">
-          Bienvenue sur Human vs Planet ! <br /> <br /> Un jeu qui vous invite à
-          prendre parti pour soit sauver la planète, soit participer activement
-          à sa destruction.
-        </p>
-      </div>
+    <>
       <div className="startContainer">
         <div className="glassMorph">
           <img
             src={logo}
             alt="human vs earth"
-            className="select-none"
-            draggable={false}
+            draggable={false} 
           />
           <div className="startInput">
-            <form className="flex justify-around items-center">
+            <form className="startForm">
               <input
                 name="player"
                 type="text"
-                placeholder="Entrez votre pseudo..."
-                className="text-input px-8 py-3 mx-8 bg-white/70 placeholder:text-slate-800 placeholder:text-center placeholder:text-lg text-2xl"
+                placeholder="Entrez un pseudo..."
+                className="textInput m-2 text-gray-800 py-2 px-8 text-4xl rounded-lg font-bold drop-shadow-md placeholder:text-slate-800 placeholder:text-lg "
                 onChange={(event) => {
                   setPlayerName(event.target.value);
                 }}
@@ -52,7 +39,7 @@ const Start = () => {
                   {" "}
                   <button
                     type="submit"
-                    className="btn m-2 text-gray-800 py-2 px-8 text-4xl rounded-lg font-bold mx-8 drop-shadow-md pt-4 hover:bg-white/40 hover:text-white"
+                    className="btn m-2 text-gray-800 py-2 px-8 text-4xl rounded-lg font-bold drop-shadow-md hover:bg-white/40 hover:text-white"
                   >
                     Jouer
                   </button>
@@ -60,9 +47,17 @@ const Start = () => {
               )}
             </form>
           </div>
+          <div className="glassMorph0">
+            <img src={question} alt="" className="questionImg" draggable={false} />
+            <p className="hide">
+              Bienvenue sur Human vs Planet ! <br /> <br /> Un jeu qui vous invite à
+              prendre parti pour soit sauver la planète, soit participer activement
+              à sa destruction.
+            </p>
+          </div>
         </div>
       </div>
-    </header>
+    </>
   );
 };
 
